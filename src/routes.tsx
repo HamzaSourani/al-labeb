@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import {
   RouterProvider,
   createBrowserRouter,
@@ -8,17 +8,21 @@ import {
 import App from "./App";
 import LoadingPage from "./pages/loading";
 import MainPage from "./pages/main";
+import Loading from "@/components/ui/loading";
+const GreetingPage = lazy(() => import("@/pages/greeting"));
 const Routes = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<App />}>
         <Route index element={<LoadingPage />} />
-        <Route path="al-labeb" element={<MainPage />}></Route>
+        <Route path="al-labeb" element={<MainPage />}>
+          <Route path="greeting" element={<GreetingPage />} />
+        </Route>
       </Route>,
     ),
   );
   return (
-    <Suspense fallback={<LoadingPage />}>
+    <Suspense fallback={<Loading />}>
       <RouterProvider router={router} />
     </Suspense>
   );

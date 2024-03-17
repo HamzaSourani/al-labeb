@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const LoadingPage = () => {
   const navigate = useNavigate();
   const handleNavigate = () => {
-    navigate("/al-labeb/welcome");
+    navigate("/al-labeb/greeting");
   };
   return (
     <div
