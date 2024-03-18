@@ -20,7 +20,7 @@ const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
     }
   };
   const handleNext = () => {
-    navigate(nextUrl);
+    navigate(nextUrl!);
   };
 
   const playNextVideo = useCallback(() => {
@@ -56,15 +56,16 @@ const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
       >
         {/* <source src={`/assets/videos/${currentVideo}.mp4`} type="video/mp4" /> */}
       </video>
-      <div className="grid px-2 [grid-template-columns:auto_1fr]">
-        <button
-          className="flex flex-col items-center justify-center transition-transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"
-          onClick={handleNext}
-        >
-          <img src="/assets/images/previous.png" alt="next" />
-          <p>التالي</p>
-        </button>
-        {/* <div className="flex items-center justify-center gap-x-4">
+      {nextUrl && (
+        <div className="grid px-2 [grid-template-columns:auto_1fr]">
+          <button
+            className="flex flex-col items-center justify-center transition-transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"
+            onClick={handleNext}
+          >
+            <img src="/assets/images/previous.png" alt="next" />
+            <p>التالي</p>
+          </button>
+          {/* <div className="flex items-center justify-center gap-x-4">
           <button
             className="transition-transform hover:scale-105"
             onClick={handlePlayPause}
@@ -72,7 +73,8 @@ const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
             {status ? "pause" : "play"}
           </button>
         </div> */}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

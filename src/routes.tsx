@@ -11,6 +11,8 @@ import MainPage from "./pages/main";
 import Loading from "@/components/ui/loading";
 const GreetingPage = lazy(() => import("@/pages/greeting"));
 const UserNamePage = lazy(() => import("@/pages/userName"));
+const ServicesPage = lazy(() => import("@/pages/services"));
+const ConfirmServicePage = lazy(() => import("@/pages/confirmService"));
 const Routes = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -19,6 +21,8 @@ const Routes = () => {
         <Route path="al-labeb" element={<MainPage />}>
           <Route path="greeting" element={<GreetingPage />} />
           <Route path="user-name" element={<UserNamePage />} />
+          <Route path="services" element={<ServicesPage />} />
+          <Route path="services/:id" element={<ConfirmServicePage />} />
         </Route>
       </Route>,
     ),

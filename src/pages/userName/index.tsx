@@ -23,7 +23,7 @@ const UserNamePage = () => {
         <div className="basis-1/3">
           <VideoPlaylist
             videoSources={enteredKeys.map((key) => key.value)}
-            nextUrl=""
+            nextUrl="/al-labeb/services"
           />
         </div>
       ) : (

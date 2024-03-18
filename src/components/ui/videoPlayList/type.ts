@@ -1,5 +1,5 @@
 interface VideoPlayListProps {
   videoSources: string[];
-  nextUrl: string;
+  nextUrl?: string;
 }
 export default VideoPlayListProps;

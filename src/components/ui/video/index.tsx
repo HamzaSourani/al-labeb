@@ -32,9 +32,12 @@ const Video = ({
   };
   return (
     <div className="flex h-full w-full flex-col gap-4">
-      <video ref={videoRef} className="aspect-square" autoPlay>
-        <source src={`/assets/videos/${src}.mp4`} type="video/mp4" />
-      </video>
+      <video
+        ref={videoRef}
+        className="aspect-square"
+        src={`/assets/videos/${src}.mp4`}
+        autoPlay
+      />
       <div className="grid px-2 [grid-template-columns:auto_1fr]">
         {/* <button
           className="flex flex-col justify-center items-center hover:scale-105 transition-transform"
@@ -56,11 +59,7 @@ const Video = ({
             className="transition-transform hover:scale-105"
             onClick={handlePlayPause}
           >
-            {status ? (
-              <img src="/assets/images/refresh.png" alt="replay" />
-            ) : (
-              <img src="/assets/images/refresh.png" alt="replay" />
-            )}
+            {status ? "pause" : "play"}
           </button>
           <button
             className="transition-transform hover:scale-105"
