@@ -1,10 +1,6 @@
 import KeyboardProps, { Key } from "./type";
 
-const Keyboard = ({
-  enteredKeys,
-  setEnteredKeys,
-  setReadEnteredCharacters,
-}: KeyboardProps) => {
+const Keyboard = ({ enteredKeys, setEnteredKeys, onSubmit }: KeyboardProps) => {
   const handleKeyPress = (key: Key) => {
     setEnteredKeys((pre) => [...pre, key]);
   };
@@ -61,7 +57,7 @@ const Keyboard = ({
       <div className="flex gap-x-4">
         <button
           className="mr-2 h-12 w-12  rounded-lg bg-gray-200 text-center text-xl shadow hover:bg-gray-300"
-          onClick={() => setReadEnteredCharacters(true)}
+          onClick={onSubmit}
         >
           تم
         </button>

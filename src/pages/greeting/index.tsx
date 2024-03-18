@@ -4,7 +4,7 @@ const GreetingPage = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center">
       <div className="md:w-1/2 lg:w-1/3 ">
-        <Video src="0" nextUrl="/" previousUrl="user-name" />
+        <Video src="0" nextUrl="/al-labeb/user-name" previousUrl="/" />
       </div>
     </div>
   );
