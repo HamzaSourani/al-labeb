@@ -2,12 +2,7 @@ import React, { useRef, useState } from "react";
 import VideoProps from "./type";
 import { useNavigate } from "react-router-dom";
 
-const Video = ({
-  src,
-  nextUrl,
-  previousUrl,
-  disableNextButton,
-}: VideoProps) => {
+const Video = ({ src, onNext, previousUrl, disableNextButton }: VideoProps) => {
   const [status, setStatus] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null!);
   const navigate = useNavigate();
@@ -24,11 +19,9 @@ const Video = ({
     videoRef.current.currentTime = 0;
     videoRef.current.play();
   };
-  const handleNext = () => {
-    navigate(nextUrl);
-  };
+
   const handlePrevious = () => {
-    navigate(previousUrl);
+    navigate(previousUrl!);
   };
   return (
     <div className="flex h-full w-full flex-col gap-4">
@@ -39,21 +32,23 @@ const Video = ({
         autoPlay
       />
       <div className="grid px-2 [grid-template-columns:auto_1fr]">
-        {/* <button
+        {/* {previousUrl&&<button
           className="flex flex-col justify-center items-center hover:scale-105 transition-transform"
           onClick={handlePrevious}
         >
           <img src="/assets/images/previous.png" alt="previous" />
           <p>السابق</p>
-        </button> */}
-        <button
-          className="flex flex-col items-center justify-center transition-transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"
-          onClick={handleNext}
-          disabled={disableNextButton}
-        >
-          <img src="/assets/images/previous.png" alt="next" />
-          <p>التالي</p>
-        </button>
+        </button>} */}
+        {onNext && (
+          <button
+            className="flex flex-col items-center justify-center transition-transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"
+            onClick={onNext}
+            disabled={disableNextButton}
+          >
+            <img src="/assets/images/previous.png" alt="next" />
+            <p>التالي</p>
+          </button>
+        )}
         <div className="flex items-center justify-center gap-x-4">
           <button
             className="transition-transform hover:scale-105"

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import "./App.css";
-import UserInfoProvider from "./hooks/usUserEnfo";
+import UserInfoProvider from "./hooks/usUserInfo";
 
 function App() {
   return (

@@ -5,28 +5,28 @@ import { Key } from "@/components/ui/keyboard/type";
 import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 
-const WorkLocationPage = () => {
+const UserAddressPage = () => {
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const [disableNextButton, setDisableNextButton] = useState(true);
 
   const { handleAddInfo } = useUserInfoContext();
   const navigate = useNavigate();
   const handleNext = () => {
-    navigate("/al-labeb/open-account/work-status/salary");
+    navigate("/al-labeb/open-account/work-status");
   };
   const handleSubmit = () => {
     handleAddInfo({
-      key: "working_field",
+      key: "address",
       value: enteredKeys.map((key) => key.label).join(""),
     });
     setDisableNextButton(false);
-    navigate("/al-labeb/open-account/work-status/salary");
+    navigate("/al-labeb/open-account/work-status");
   };
   return (
     <div className="flex h-screen flex-col  items-center justify-around  md:flex-row">
       <div className="basis-1/3">
         <Video
-          src="45"
+          src="3.7"
           onNext={handleNext}
           previousUrl="/"
           disableNextButton={disableNextButton}
@@ -41,4 +41,4 @@ const WorkLocationPage = () => {
   );
 };
 
-export default WorkLocationPage;
+export default UserAddressPage;

@@ -1,7 +1,7 @@
 interface VideoProps {
   src: string;
-  nextUrl: string;
-  previousUrl: string;
+  onNext?: () => void;
+  previousUrl?: string;
   disableNextButton?: boolean;
 }
 export default VideoProps;

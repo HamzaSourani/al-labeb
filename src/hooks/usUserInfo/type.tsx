@@ -6,16 +6,15 @@ export interface UserInfo {
   mother_lastname: string;
   address: string;
   working: boolean;
-  client_status: string;
-  working_field: string;
-  company_name: string;
-  salary: string;
+  client_status: string | null;
+  working_field: string | null;
+  company_name: string | null;
+  salary: string | null;
   housing: boolean;
   married: boolean;
-  spouse_firstname: string;
-  spouse_lastname: string;
-  num_children: string;
-  created: Date | null;
+  spouse_firstname: string | null;
+  spouse_lastname: string | null;
+  num_children: string | null;
 }
 
 export interface HandleAddInfoParams {

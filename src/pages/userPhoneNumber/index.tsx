@@ -1,38 +1,37 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Keyboard from "@/components/ui/keyboard";
-import { Key } from "@/components/ui/keyboard/type";
+import NumericKeyboard from "@/components/ui/NumericKeyboard";
 import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 
-const WorkLocationPage = () => {
-  const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
+const UserPhoneNumberPage = () => {
   const [disableNextButton, setDisableNextButton] = useState(true);
-
+  const [enteredKeys, setEnteredKeys] = useState<string>("");
   const { handleAddInfo } = useUserInfoContext();
   const navigate = useNavigate();
   const handleNext = () => {
-    navigate("/al-labeb/open-account/work-status/salary");
+    navigate("/al-labeb/services");
   };
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     handleAddInfo({
-      key: "working_field",
-      value: enteredKeys.map((key) => key.label).join(""),
+      key: "phone",
+      value: enteredKeys,
     });
     setDisableNextButton(false);
-    navigate("/al-labeb/open-account/work-status/salary");
+    navigate("/al-labeb/services");
   };
+
   return (
     <div className="flex h-screen flex-col  items-center justify-around  md:flex-row">
       <div className="basis-1/3">
         <Video
-          src="45"
+          src="4.4"
           onNext={handleNext}
           previousUrl="/"
           disableNextButton={disableNextButton}
         />
       </div>
-      <Keyboard
+      <NumericKeyboard
         enteredKeys={enteredKeys}
         setEnteredKeys={setEnteredKeys}
         onSubmit={handleSubmit}
@@ -41,4 +40,4 @@ const WorkLocationPage = () => {
   );
 };
 
-export default WorkLocationPage;
+export default UserPhoneNumberPage;

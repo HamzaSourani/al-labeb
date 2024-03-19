@@ -11,6 +11,7 @@ import MainPage from "./pages/main";
 import Loading from "@/components/ui/loading";
 const GreetingPage = lazy(() => import("@/pages/greeting"));
 const UserNamePage = lazy(() => import("@/pages/userName"));
+const UserPhoneNumberPage = lazy(() => import("@/pages/userPhoneNumber"));
 const ServicesPage = lazy(() => import("@/pages/services"));
 const ConfirmServicePage = lazy(
   () => import("@/pages/services/confirmService"),
@@ -20,6 +21,9 @@ const OpenAccountMainPage = lazy(
 );
 const SavingAccountMainPage = lazy(
   () => import("@/pages/services/openAccount/savingAccount/main"),
+);
+const SavingAccountExplanation = lazy(
+  () => import("@/pages/services/openAccount/savingAccount/explanation"),
 );
 const TermsAndConditionMainPage = lazy(
   () => import("@/pages/services/openAccount/termsAndConditions/main"),
@@ -54,8 +58,8 @@ const NumberOfChildrenPage = lazy(
 const HasHousePage = lazy(
   () => import("@/pages/services/openAccount/hasHouse"),
 );
-const UserLocationPage = lazy(
-  () => import("@/pages/services/openAccount/location"),
+const UserAddressPage = lazy(
+  () => import("@/pages/services/openAccount/address"),
 );
 const WorkStatusMainPage = lazy(
   () => import("@/pages/services/openAccount/workStatus/main"),
@@ -84,12 +88,17 @@ const Routes = () => {
         <Route path="al-labeb" element={<MainPage />}>
           <Route path="greeting" element={<GreetingPage />} />
           <Route path="user-name" element={<UserNamePage />} />
+          <Route path="user-phone" element={<UserPhoneNumberPage />} />
           <Route path="services" element={<ServicesPage />} />
           <Route path="services/:id" element={<ConfirmServicePage />} />
           <Route path="open-account" element={<OpenAccountMainPage />} />
           <Route
             path="open-account/saving-account"
             element={<SavingAccountMainPage />}
+          />
+          <Route
+            path="open-account/saving-account/explanation"
+            element={<SavingAccountExplanation />}
           />
           <Route
             path="open-account/terms-and-conditions"
@@ -133,8 +142,8 @@ const Routes = () => {
           />
           <Route path="open-account/has-house" element={<HasHousePage />} />
           <Route
-            path="open-account/uer-location"
-            element={<UserLocationPage />}
+            path="open-account/user-address"
+            element={<UserAddressPage />}
           />
           <Route
             path="open-account/work-status"
