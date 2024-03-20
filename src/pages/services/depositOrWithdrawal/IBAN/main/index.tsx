@@ -10,7 +10,7 @@ const IBANPage = () => {
   const [enteredKeys, setEnteredKeys] = useState<string>("");
   const { depositOrWithdrawalInfo, handleAddDepositOrWithdrawalInfo } =
     useUserInfoContext();
-
+  console.log(depositOrWithdrawalInfo);
   const navigate = useNavigate();
   const handleNext = () => {};
   const handleSubmit = async () => {

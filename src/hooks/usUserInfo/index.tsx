@@ -36,6 +36,7 @@ const depositOrWithDrawalInfoObject = {
   client_id: "",
   service_name: "",
   amount: "",
+  phone: "",
   source: null,
   cause: "",
 };

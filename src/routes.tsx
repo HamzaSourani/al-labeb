@@ -96,7 +96,19 @@ const ReEnterNationalNumberPage = lazy(
   () =>
     import("@/pages/services/depositOrWithdrawal/IBAN/reEnterNationalNumber"),
 );
+const DepositMainPage = lazy(() => import("@/pages/services/deposit/main"));
+const DepositSourcePage = lazy(
+  () => import("@/pages/services/deposit/source/main"),
+);
+const FinancialBusinessIncomePage = lazy(
+  () => import("@/pages/services/deposit/source/financialBusinessIncome"),
+);
+const DepositCausePage = lazy(() => import("@/pages/services/deposit/cause"));
+const DepositAmountPage = lazy(() => import("@/pages/services/deposit/amount"));
 const EndPage = lazy(() => import("@/pages/end"));
+const EndDepositFlowPage = lazy(
+  () => import("@/pages/services/deposit/endFlow"),
+);
 const Routes = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -197,6 +209,16 @@ const Routes = () => {
             path="services/IBAN/re-enter-national-number"
             element={<ReEnterNationalNumberPage />}
           />
+          <Route path="deposit" element={<DepositMainPage />} />
+          <Route path="deposit/source" element={<DepositSourcePage />} />
+          <Route
+            path="deposit/source/financial-business-income"
+            element={<FinancialBusinessIncomePage />}
+          />
+          <Route path="deposit/cause" element={<DepositCausePage />} />
+          <Route path="deposit/amount" element={<DepositAmountPage />} />
+          <Route path="deposit/end" element={<EndDepositFlowPage />} />
+
           <Route path="end" element={<EndPage />} />
         </Route>
       </Route>,

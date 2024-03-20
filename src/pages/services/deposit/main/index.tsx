@@ -4,7 +4,7 @@ import Video from "@/components/ui/video";
 const DepositMainPage = () => {
   const navigate = useNavigate();
   const handleNext = () => {
-    navigate("/al-labeb/deposit/IBAN");
+    navigate("source");
   };
   return (
     <div className=" flex h-screen items-center justify-center">

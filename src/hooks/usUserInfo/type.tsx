@@ -21,7 +21,8 @@ export interface DepositOrWithDrawalInfoObject {
   national_id: string;
   service_name: "withdrawal" | "deposit" | string;
   amount: string;
-  source?: string | null;
+  phone: string;
+  source?: "ادخار" | "راتب" | "عائدات عمل تجاري" | null;
   cause: string;
 }
 export interface HandleAddInfoParams {
