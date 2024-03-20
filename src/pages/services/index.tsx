@@ -1,12 +1,28 @@
 import Video from "@/components/ui/video";
+import { useUserInfoContext } from "@/hooks/usUserInfo";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ServicesPage = () => {
   const [selectedService, setSelectedService] = useState("2");
   const navigate = useNavigate();
+  const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
   const SERVICES = ["3", "4", "40"];
   const handleNext = () => {
+    switch (selectedService) {
+      case "4":
+        handleAddDepositOrWithdrawalInfo({
+          key: "service_name",
+          value: "deposit",
+        });
+        break;
+      case "40":
+        handleAddDepositOrWithdrawalInfo({
+          key: "service_name",
+          value: "withdrawal",
+        });
+        break;
+    }
     navigate(selectedService);
   };
   return (

@@ -1,4 +1,7 @@
-interface ReturnValue {
+export interface ReturnValue {
   status: boolean;
 }
-export default ReturnValue;
+export interface CheckNationalNumberParams {
+  national_id: string;
+  account_id?: string;
+}

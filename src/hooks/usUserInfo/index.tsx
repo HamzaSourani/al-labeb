@@ -5,7 +5,13 @@ import {
   useContext,
   useState,
 } from "react";
-import { HandleAddInfoParams, UserInfo, UserInfoContextType } from "./type";
+import {
+  HandleAddInfoParams,
+  UserInfo,
+  UserInfoContextType,
+  DepositOrWithDrawalInfoObject,
+  HandleAddDepositOrWithdrawalInfoParams,
+} from "./type";
 
 const userInformation = {
   national_id: "",
@@ -25,8 +31,19 @@ const userInformation = {
   spouse_lastname: null,
   num_children: null,
 };
+const depositOrWithDrawalInfoObject = {
+  national_id: "",
+  client_id: "",
+  service_name: "",
+  amount: "",
+  source: null,
+  cause: "",
+};
+
 const userInfoContext = createContext<UserInfoContextType>({
   userInfo: userInformation,
+  depositOrWithdrawalInfo: depositOrWithDrawalInfoObject,
+  handleAddDepositOrWithdrawalInfo: () => {},
   handleAddInfo: () => {},
 });
 
@@ -36,6 +53,8 @@ export const useUserInfoContext = () => {
 
 const UserInfoProvider: FC<PropsWithChildren> = ({ children }) => {
   const [userInfo, setUserInfo] = useState<UserInfo>(userInformation);
+  const [depositOrWithdrawalInfo, setDepositOrWithDrawalInfo] =
+    useState<DepositOrWithDrawalInfoObject>(depositOrWithDrawalInfoObject);
 
   const handleAddInfo = ({ key, value }: HandleAddInfoParams) => {
     setUserInfo((prevUserInfo) => ({
@@ -44,8 +63,24 @@ const UserInfoProvider: FC<PropsWithChildren> = ({ children }) => {
     }));
   };
 
+  const handleAddDepositOrWithdrawalInfo = ({
+    key,
+    value,
+  }: HandleAddDepositOrWithdrawalInfoParams) => {
+    setDepositOrWithDrawalInfo((preInfo) => ({
+      ...preInfo,
+      [key]: value,
+    }));
+  };
   return (
-    <userInfoContext.Provider value={{ userInfo, handleAddInfo }}>
+    <userInfoContext.Provider
+      value={{
+        userInfo,
+        handleAddInfo,
+        depositOrWithdrawalInfo,
+        handleAddDepositOrWithdrawalInfo,
+      }}
+    >
       {children}
     </userInfoContext.Provider>
   );

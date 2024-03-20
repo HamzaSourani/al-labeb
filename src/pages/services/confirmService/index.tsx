@@ -13,7 +13,7 @@ const ConfirmServicePage = () => {
         navigate("/al-labeb/open-account");
         break;
       case "4":
-        navigate("/");
+        navigate("/al-labeb/deposit");
         break;
       case "40":
         navigate("/");

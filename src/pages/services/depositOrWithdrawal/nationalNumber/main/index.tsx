@@ -8,21 +8,19 @@ import { useNavigate } from "react-router-dom";
 const NationalNumberMainPage = () => {
   const [disableNextButton, setDisableNextButton] = useState(true);
   const [enteredKeys, setEnteredKeys] = useState<string>("");
-  const { handleAddInfo } = useUserInfoContext();
   const navigate = useNavigate();
-  const handleNext = () => {
-    navigate("/al-labeb/user-name");
-  };
+  const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
+  const handleNext = () => {};
   const handleSubmit = async () => {
     const res = await checkNationalNumber({ national_id: enteredKeys });
     if (res?.data && res.data.status) {
-      navigate("/al-labeb/open-account/exist-account");
-    } else {
-      handleAddInfo({
+      handleAddDepositOrWithdrawalInfo({
         key: "national_id",
         value: enteredKeys,
       });
-      navigate("/al-labeb/open-account/mother-first-name");
+      navigate("/al-labeb/services/IBAN");
+    } else {
+      navigate("/al-labeb/services/national-number/un-exist");
     }
   };
   return (

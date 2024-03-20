@@ -16,13 +16,30 @@ export interface UserInfo {
   spouse_lastname: string | null;
   num_children: string | null;
 }
-
+export interface DepositOrWithDrawalInfoObject {
+  client_id: string;
+  national_id: string;
+  service_name: "withdrawal" | "deposit" | string;
+  amount: string;
+  source?: string | null;
+  cause: string;
+}
 export interface HandleAddInfoParams {
   key: keyof UserInfo;
   value: string | boolean | object | null;
 }
 
+export interface HandleAddDepositOrWithdrawalInfoParams {
+  key: keyof DepositOrWithDrawalInfoObject;
+  value: string | boolean | object | null;
+}
+
 export interface UserInfoContextType {
   userInfo: UserInfo;
+  depositOrWithdrawalInfo: DepositOrWithDrawalInfoObject;
   handleAddInfo: ({ key, value }: HandleAddInfoParams) => void;
+  handleAddDepositOrWithdrawalInfo: ({
+    key,
+    value,
+  }: HandleAddDepositOrWithdrawalInfoParams) => void;
 }
