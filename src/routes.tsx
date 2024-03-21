@@ -105,10 +105,31 @@ const FinancialBusinessIncomePage = lazy(
 );
 const DepositCausePage = lazy(() => import("@/pages/services/deposit/cause"));
 const DepositAmountPage = lazy(() => import("@/pages/services/deposit/amount"));
-const EndPage = lazy(() => import("@/pages/end"));
 const EndDepositFlowPage = lazy(
   () => import("@/pages/services/deposit/endFlow"),
 );
+const WithdrawalMainPage = lazy(
+  () => import("@/pages/services/withdrawal/main"),
+);
+const WithdrawalCausePage = lazy(
+  () => import("@/pages/services/withdrawal/cause/main"),
+);
+const PersonalExpensePage = lazy(
+  () => import("@/pages/services/withdrawal/cause/personalExpense"),
+);
+const CommercialPurposePage = lazy(
+  () => import("@/pages/services/withdrawal/cause/commercialPurpose"),
+);
+const WithdrawalAmountPage = lazy(
+  () => import("@/pages/services/withdrawal/amount/main"),
+);
+const ExceedAmountPage = lazy(
+  () => import("@/pages/services/withdrawal/amount/exceedAmount"),
+);
+const EndWithdrawalFlowPage = lazy(
+  () => import("@/pages/services/withdrawal/endFlow"),
+);
+const EndPage = lazy(() => import("@/pages/end"));
 const Routes = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -218,6 +239,23 @@ const Routes = () => {
           <Route path="deposit/cause" element={<DepositCausePage />} />
           <Route path="deposit/amount" element={<DepositAmountPage />} />
           <Route path="deposit/end" element={<EndDepositFlowPage />} />
+
+          <Route path="withdrawal" element={<WithdrawalMainPage />} />
+          <Route path="withdrawal/cause" element={<WithdrawalCausePage />} />
+          <Route
+            path="withdrawal/cause/personal-expense"
+            element={<PersonalExpensePage />}
+          />
+          <Route
+            path="withdrawal/cause/commercial-purpose"
+            element={<CommercialPurposePage />}
+          />
+          <Route path="withdrawal/amount" element={<WithdrawalAmountPage />} />
+          <Route
+            path="withdrawal/amount/exceed-amount"
+            element={<ExceedAmountPage />}
+          />
+          <Route path="withdrawal/end" element={<EndWithdrawalFlowPage />} />
 
           <Route path="end" element={<EndPage />} />
         </Route>
