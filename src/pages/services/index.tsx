@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 const ServicesPage = () => {
   const [selectedService, setSelectedService] = useState("2");
   const navigate = useNavigate();
-  const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
+  const { depositOrWithdrawalInfo, handleAddDepositOrWithdrawalInfo } =
+    useUserInfoContext();
+  console.log(depositOrWithdrawalInfo.service_name, "service");
   const SERVICES = ["3", "4", "40"];
   const handleNext = () => {
     switch (selectedService) {

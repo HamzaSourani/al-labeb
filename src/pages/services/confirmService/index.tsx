@@ -16,7 +16,7 @@ const ConfirmServicePage = () => {
         navigate("/al-labeb/deposit");
         break;
       case "40":
-        navigate("/");
+        navigate("/al-labeb/withdrawal");
         break;
       default:
         navigate(-1);

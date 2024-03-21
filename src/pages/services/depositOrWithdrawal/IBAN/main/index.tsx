@@ -25,10 +25,10 @@ const IBANPage = () => {
       });
       switch (depositOrWithdrawalInfo.service_name) {
         case "deposit":
-          navigate("/al-labeb/deposit");
+          navigate("/al-labeb/deposit/source");
           break;
         case "withdrawal":
-          navigate("/al-labeb/withdrawal");
+          navigate("/al-labeb/withdrawal/amount");
           break;
         default:
           navigate("/al-labeb/services");
