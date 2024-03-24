@@ -8,7 +8,7 @@ const LoadingPage = () => {
   };
   return (
     <div
-      className="flex justify-center items-center h-screen"
+      className="flex h-screen  items-center justify-center"
       onClick={handleNavigate}
     >
       <img

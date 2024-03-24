@@ -1,6 +1,10 @@
 import React, { useRef, useState } from "react";
 import VideoProps from "./type";
 import { useNavigate } from "react-router-dom";
+import NextIcon from "@/components/svg/next";
+import PauseIcon from "@/components/svg/pause";
+import PlayIcon from "@/components/svg/play";
+import RefreshIcon from "@/components/svg/refresh";
 
 const Video = ({ src, onNext, previousUrl, disableNextButton }: VideoProps) => {
   const [status, setStatus] = useState(true);
@@ -24,14 +28,16 @@ const Video = ({ src, onNext, previousUrl, disableNextButton }: VideoProps) => {
     navigate(previousUrl!);
   };
   return (
-    <div className="flex h-full w-full flex-col gap-4">
-      <video
-        ref={videoRef}
-        className="aspect-square"
-        src={`/assets/videos/${src}.mp4`}
-        autoPlay
-      />
-      <div className="grid px-2 [grid-template-columns:auto_1fr]">
+    <div className="flex h-full w-full flex-col gap-4 overflow-hidden rounded-lg shadow-sm shadow-gray-300">
+      <div className="overflow-hidden rounded-t-lg border border-primary">
+        <video
+          ref={videoRef}
+          className="aspect-square"
+          src={`/assets/videos/${src}.mp4`}
+          autoPlay
+        />
+      </div>
+      <div className="grid  p-4 [grid-template-columns:auto_1fr]">
         {/* {previousUrl&&<button
           className="flex flex-col justify-center items-center hover:scale-105 transition-transform"
           onClick={handlePrevious}
@@ -45,8 +51,7 @@ const Video = ({ src, onNext, previousUrl, disableNextButton }: VideoProps) => {
             onClick={onNext}
             disabled={disableNextButton}
           >
-            <img src="/assets/images/previous.png" alt="next" />
-            <p>التالي</p>
+            <NextIcon className="h-6  w-6 fill-primary md:h-8 md:w-8 lg:h-10 lg:w-10" />
           </button>
         )}
         <div className="flex items-center justify-center gap-x-4">
@@ -54,13 +59,17 @@ const Video = ({ src, onNext, previousUrl, disableNextButton }: VideoProps) => {
             className="transition-transform hover:scale-105"
             onClick={handlePlayPause}
           >
-            {status ? "pause" : "play"}
+            {status ? (
+              <PauseIcon className="h-6  w-6 fill-secondary md:h-8 md:w-8 lg:h-10 lg:w-10" />
+            ) : (
+              <PlayIcon className="h-6  w-6 fill-secondary md:h-8 md:w-8 lg:h-10 lg:w-10" />
+            )}
           </button>
           <button
             className="transition-transform hover:scale-105"
             onClick={handleReplay}
           >
-            <img src="/assets/images/refresh.png" alt="replay" />
+            <RefreshIcon className="h-6  w-6 fill-secondary md:h-8 md:w-8 lg:h-10 lg:w-10" />
           </button>
         </div>
       </div>

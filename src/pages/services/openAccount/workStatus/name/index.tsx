@@ -23,13 +23,13 @@ const WorkNamePage = () => {
     navigate("/al-labeb/open-account/work-status/location");
   };
   return (
-    <div className="flex h-screen flex-col  items-center justify-around  md:flex-row">
+    <div className="flex  flex-col  items-center justify-around  md:flex-row">
       <div className="basis-1/3">
         <Video
           src="44"
-          onNext={handleNext}
+          onNext={handleSubmit}
           previousUrl="/"
-          disableNextButton={disableNextButton}
+          // disableNextButton={disableNextButton}
         />
       </div>
       <Keyboard

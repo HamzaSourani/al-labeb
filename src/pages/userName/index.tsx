@@ -22,7 +22,7 @@ const UserNamePage = () => {
     });
   };
   return (
-    <div className="flex h-screen flex-col  items-center justify-around  md:flex-row">
+    <div className="flex flex-col  items-center justify-around  md:flex-row">
       {readEnteredCharacters ? (
         <div className="basis-1/3">
           <VideoPlaylist
@@ -35,9 +35,9 @@ const UserNamePage = () => {
           <div className="basis-1/3">
             <Video
               src="0"
-              onNext={handleNext}
+              onNext={handleSubmit}
               previousUrl="/"
-              disableNextButton={true}
+              // disableNextButton={true}
             />
           </div>
           <Keyboard

@@ -15,7 +15,7 @@ const WithdrawalAmountPage = () => {
   const handleSubmit = async () => {
     const res = await checkMonyAvailability({
       national_id: depositOrWithdrawalInfo.national_id,
-      account_id: depositOrWithdrawalInfo.client_id,
+      account_id: depositOrWithdrawalInfo.account_id,
       amount: enteredKeys,
     });
     if (res && res?.status) {
@@ -31,13 +31,13 @@ const WithdrawalAmountPage = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col  items-center justify-around  md:flex-row">
+    <div className="flex  flex-col  items-center justify-around  md:flex-row">
       <div className="basis-1/3">
         <Video
           src="40.2"
-          onNext={handleNext}
+          onNext={handleSubmit}
           previousUrl="/"
-          disableNextButton={disableNextButton}
+          // disableNextButton={disableNextButton}
         />
       </div>
       <NumericKeyboard

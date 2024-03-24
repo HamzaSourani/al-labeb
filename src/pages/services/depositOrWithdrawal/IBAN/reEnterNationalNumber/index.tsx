@@ -7,7 +7,7 @@ const ReEnterNationalNumberPage = () => {
     navigate("/al-labeb/services/national-number");
   };
   return (
-    <div className=" flex h-screen items-center justify-center">
+    <div className=" flex  items-center justify-center">
       <div className="md:w-1/2 lg:w-1/3 ">
         {
           //TODO change video to re enter national number

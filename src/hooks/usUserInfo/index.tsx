@@ -33,7 +33,8 @@ const userInformation = {
 };
 const depositOrWithDrawalInfoObject = {
   national_id: "",
-  client_id: "",
+  client: "",
+  account_id: "",
   service_name: "",
   amount: "",
   phone: "",

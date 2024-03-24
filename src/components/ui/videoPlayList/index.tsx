@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import VideoPlayListProps from "./type";
 import { useNavigate } from "react-router-dom";
+import NextIcon from "@/components/svg/next";
 
 const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
@@ -46,7 +47,7 @@ const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
   console.log(currentVideo);
 
   return (
-    <div className="flex h-full w-full flex-col gap-4">
+    <div className="flex h-full w-full flex-col gap-4  overflow-hidden rounded-lg shadow-sm shadow-gray-300">
       <video
         id="video-player"
         ref={videoRef}
@@ -57,22 +58,13 @@ const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
         {/* <source src={`/assets/videos/${currentVideo}.mp4`} type="video/mp4" /> */}
       </video>
       {nextUrl && (
-        <div className="grid px-2 [grid-template-columns:auto_1fr]">
+        <div className="flex justify-start p-4">
           <button
             className="flex flex-col items-center justify-center transition-transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"
             onClick={handleNext}
           >
-            <img src="/assets/images/previous.png" alt="next" />
-            <p>التالي</p>
+            <NextIcon className="fill-primary  h-6 w-6 md:h-8 md:w-8 lg:h-10 lg:w-10" />
           </button>
-          {/* <div className="flex items-center justify-center gap-x-4">
-          <button
-            className="transition-transform hover:scale-105"
-            onClick={handlePlayPause}
-          >
-            {status ? "pause" : "play"}
-          </button>
-        </div> */}
         </div>
       )}
     </div>

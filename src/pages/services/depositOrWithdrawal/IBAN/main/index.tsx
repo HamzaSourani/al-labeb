@@ -20,14 +20,14 @@ const IBANPage = () => {
     });
     if (res?.data && res.data.status) {
       handleAddDepositOrWithdrawalInfo({
-        key: "client_id",
+        key: "account_id",
         value: enteredKeys,
       });
       switch (depositOrWithdrawalInfo.service_name) {
-        case "deposit":
+        case "إيداع":
           navigate("/al-labeb/deposit/source");
           break;
-        case "withdrawal":
+        case "سحب":
           navigate("/al-labeb/withdrawal/amount");
           break;
         default:
@@ -42,13 +42,13 @@ const IBANPage = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col  items-center justify-around  md:flex-row">
+    <div className="flex  flex-col  items-center justify-around  md:flex-row">
       <div className="basis-1/3">
         <Video
           src="4.1"
-          onNext={handleNext}
+          onNext={handleSubmit}
           previousUrl="/"
-          disableNextButton={disableNextButton}
+          // disableNextButton={disableNextButton}
         />
       </div>
       <NumericKeyboard

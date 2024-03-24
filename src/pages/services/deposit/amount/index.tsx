@@ -20,13 +20,13 @@ const DepositAmountPage = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col  items-center justify-around  md:flex-row">
+    <div className="flex  flex-col  items-center justify-around  md:flex-row">
       <div className="basis-1/3">
         <Video
           src="4.2"
-          onNext={handleNext}
+          onNext={handleSubmit}
           previousUrl="/"
-          disableNextButton={disableNextButton}
+          // disableNextButton={disableNextButton}
         />
       </div>
       <NumericKeyboard

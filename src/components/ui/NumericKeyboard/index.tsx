@@ -19,12 +19,12 @@ const NumericKeyboard = ({
   return (
     <div className="flex flex-col items-center gap-y-4">
       <div className="flex gap-x-4">
-        <button
+        {/* <button
           className="mr-2 h-12 w-12  rounded-lg bg-gray-200 text-center text-xl shadow hover:bg-gray-300"
           onClick={onSubmit}
         >
           تم
-        </button>
+        </button> */}
         <output className="min-h-12  w-96  rounded-lg border border-gray-300 px-4 py-2 shadow-md">
           {enteredKeys}
         </output>

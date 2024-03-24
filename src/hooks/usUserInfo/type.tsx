@@ -17,9 +17,10 @@ export interface UserInfo {
   num_children: string | null;
 }
 export interface DepositOrWithDrawalInfoObject {
-  client_id: string;
+  client: string;
+  account_id: string;
   national_id: string;
-  service_name: "withdrawal" | "deposit" | string;
+  service_name: "سحب" | "إيداع" | string;
   amount: string;
   phone: string;
   source?: "ادخار" | "راتب" | "عائدات عمل تجاري" | null;
