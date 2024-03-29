@@ -1,7 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
-
+export interface Key {
+  value: string;
+  img: string;
+}
 interface NumericKeyboardProps {
-  enteredKeys: string;
-  setEnteredKeys: Dispatch<SetStateAction<string>>;
+  enteredKeys: Key[];
+  setEnteredKeys: Dispatch<SetStateAction<Key[]>>;
 }
 export default NumericKeyboardProps;

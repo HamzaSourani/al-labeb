@@ -1,19 +1,22 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import checkNationalNumber from "@/api/nationalNumber";
 import NumericKeyboard from "@/components/ui/NumericKeyboard";
 import Video from "@/components/ui/video";
 import useValidation from "@/hooks/useValidation";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Key } from "@/components/ui/NumericKeyboard/type";
 
 const NationalNumberMainPage = () => {
-  const [enteredKeys, setEnteredKeys] = useState<string>("");
+  const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const navigate = useNavigate();
   const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
   const isValid = useValidation(enteredKeys.length === 11);
 
   const handleSubmit = async () => {
-    const res = await checkNationalNumber({ national_id: enteredKeys });
+    const res = await checkNationalNumber({
+      national_id: enteredKeys.map((key) => key.value).join(""),
+    });
     if (res?.data && res.data.status) {
       handleAddDepositOrWithdrawalInfo({
         key: "client",

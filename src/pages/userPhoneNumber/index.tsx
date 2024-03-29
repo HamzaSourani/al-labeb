@@ -4,9 +4,10 @@ import NumericKeyboard from "@/components/ui/NumericKeyboard";
 import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import useValidation from "@/hooks/useValidation";
+import { Key } from "@/components/ui/NumericKeyboard/type";
 
 const UserPhoneNumberPage = () => {
-  const [enteredKeys, setEnteredKeys] = useState<string>("");
+  const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const { handleAddInfo, handleAddDepositOrWithdrawalInfo } =
     useUserInfoContext();
   const isValid = useValidation(enteredKeys.length === 10);
@@ -16,11 +17,11 @@ const UserPhoneNumberPage = () => {
   const handleSubmit = async () => {
     handleAddInfo({
       key: "phone",
-      value: enteredKeys,
+      value: enteredKeys.map((key) => key.value).join(""),
     });
     handleAddDepositOrWithdrawalInfo({
       key: "phone",
-      value: enteredKeys,
+      value: enteredKeys.map((key) => key.value).join(""),
     });
     navigate("/al-labeb/services");
   };

@@ -1,31 +1,38 @@
-import NumericKeyboardProps from "./type";
+import BackwardIcon from "@/components/svg/backward";
+import NumericKeyboardProps, { Key } from "./type";
+import DeleteIcon from "@/components/svg/delete";
 
 const NumericKeyboard = ({
   enteredKeys,
   setEnteredKeys,
 }: NumericKeyboardProps) => {
-  const handleKeyPress = (key: string) => {
-    setEnteredKeys((pre) => pre + key);
+  const handleKeyPress = (key: Key) => {
+    setEnteredKeys((pre) => [...pre, key]);
   };
 
   const keyboardLayout = [
-    ["1", "2", "3"],
-    ["4", "5", "6"],
-    ["7", "8", "9"],
-    ["0"],
+    [
+      { value: "1", img: "" },
+      { value: "2", img: "" },
+      { value: "3", img: "" },
+    ],
+    [
+      { value: "4", img: "" },
+      { value: "5", img: "" },
+      { value: "6", img: "" },
+    ],
+    [
+      { value: "7", img: "" },
+      { value: "8", img: "" },
+      { value: "9", img: "" },
+    ],
   ];
 
   return (
     <div className="flex flex-col items-center gap-y-4">
       <div className="flex gap-x-4">
-        {/* <button
-          className="mr-2 h-12 w-12  rounded-lg bg-gray-200 text-center text-xl shadow hover:bg-gray-300"
-          onClick={onSubmit}
-        >
-          تم
-        </button> */}
         <output className="min-h-12  w-96  rounded-lg border border-gray-300 px-4 py-2 shadow-md">
-          {enteredKeys}
+          {enteredKeys.map((key) => key.value)}
         </output>
       </div>
       <div className="flex items-start p-4 ">
@@ -33,35 +40,52 @@ const NumericKeyboard = ({
           {keyboardLayout.map((row, rowIndex) => (
             <div key={rowIndex} className="mb-2 flex justify-center">
               {row.map((key, keyIndex) => (
-                <input
+                <button
                   key={keyIndex}
-                  type="button"
-                  className="mr-2 h-12 w-12 rounded-lg bg-gray-200 text-center text-xl shadow hover:bg-gray-300"
-                  value={key}
+                  className="relative mr-2 aspect-square grow rounded-lg border  border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300"
                   onClick={() => handleKeyPress(key)}
-                />
+                >
+                  <span className="inline-block h-4  w-4  md:h-6 md:w-6 lg:h-7 lg:w-7">
+                    {key.value}
+                  </span>
+                  <span className="absolute -left-2 -top-3 h-9 w-9">
+                    <img src={key.img} alt={key.value} />
+                  </span>
+                </button>
               ))}
             </div>
           ))}
-        </div>
-        <div className="mb-2 flex flex-col gap-y-4">
-          <input
-            type="button"
-            className="mr-2 rounded-lg bg-gray-200 px-4 py-2 text-center text-xl shadow hover:bg-gray-300"
-            value={"رجوع"}
-            onClick={() => {
-              enteredKeys.length &&
-                setEnteredKeys((pre) => pre.slice(0, pre.length - 1));
-            }}
-          />
-          <input
-            type="button"
-            className="mr-2 rounded-lg bg-gray-200 px-4 py-2 text-center text-xl shadow hover:bg-gray-300"
-            value={"حذف"}
-            onClick={() => {
-              setEnteredKeys("");
-            }}
-          />
+          <div className="flex justify-center">
+            <button
+              className="mr-2 aspect-square rounded-lg border border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300"
+              onClick={() => {
+                enteredKeys.length &&
+                  setEnteredKeys((pre) => pre.slice(0, pre.length - 1));
+              }}
+            >
+              <BackwardIcon className="h-4  w-4 fill-secondary md:h-6 md:w-6 lg:h-7 lg:w-7" />
+            </button>
+            <button
+              className="relative mr-2 rounded-lg border  border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300"
+              onClick={() => handleKeyPress({ value: "0", img: "" })}
+            >
+              <span className="inline-block h-4  w-4  md:h-6 md:w-6 lg:h-7 lg:w-7">
+                0{" "}
+              </span>
+              <span className="absolute -left-2 -top-3 h-9 w-9">
+                <img src={""} alt={""} />
+              </span>
+            </button>
+
+            <button
+              className="mr-2 rounded-lg border border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300"
+              onClick={() => {
+                setEnteredKeys([]);
+              }}
+            >
+              <DeleteIcon className="h-4  w-4 fill-red-500 md:h-6 md:w-6 lg:h-7 lg:w-7" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

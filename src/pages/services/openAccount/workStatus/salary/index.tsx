@@ -4,17 +4,20 @@ import NumericKeyboard from "@/components/ui/NumericKeyboard";
 import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import useValidation from "@/hooks/useValidation";
+import { Key } from "@/components/ui/NumericKeyboard/type";
 
 const SalaryPage = () => {
-  const [enteredKeys, setEnteredKeys] = useState<string>("");
+  const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const { handleAddInfo } = useUserInfoContext();
   const navigate = useNavigate();
-  const isValid = useValidation(Number(enteredKeys) > 0);
+  const isValid = useValidation(
+    Number(enteredKeys.map((key) => key.value).join("")) > 0,
+  );
 
   const handleSubmit = async () => {
     handleAddInfo({
       key: "salary",
-      value: enteredKeys,
+      value: enteredKeys.map((key) => key.value).join(""),
     });
     navigate("/al-labeb/open-account/end");
   };

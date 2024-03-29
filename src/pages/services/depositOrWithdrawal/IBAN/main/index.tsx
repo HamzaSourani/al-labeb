@@ -5,9 +5,10 @@ import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import checkNationalNumber from "@/api/nationalNumber";
 import useValidation from "@/hooks/useValidation";
+import { Key } from "@/components/ui/NumericKeyboard/type";
 
 const IBANPage = () => {
-  const [enteredKeys, setEnteredKeys] = useState<string>("");
+  const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const { depositOrWithdrawalInfo, handleAddDepositOrWithdrawalInfo } =
     useUserInfoContext();
   const isValid = useValidation(enteredKeys.length === 9);
@@ -16,7 +17,7 @@ const IBANPage = () => {
   const handleSubmit = async () => {
     const res = await checkNationalNumber({
       national_id: depositOrWithdrawalInfo.national_id,
-      account_id: enteredKeys,
+      account_id: enteredKeys.map((key) => key.value).join(""),
     });
     if (res?.data && res.data.status) {
       handleAddDepositOrWithdrawalInfo({

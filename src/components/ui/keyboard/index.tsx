@@ -77,44 +77,45 @@ const Keyboard = ({ enteredKeys, setEnteredKeys }: KeyboardProps) => {
         {keyboardLayout.map((row, rowIndex) => (
           <div key={rowIndex} className="mb-2 flex justify-center">
             {row.map((key, keyIndex) => (
-              <div className="relative" key={keyIndex}>
+              <button
+                key={keyIndex}
+                className="relative mr-2 aspect-square  rounded-lg border  border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300"
+                onClick={() => handleKeyPress(key)}
+              >
+                <span className="inline-block h-4  w-4  md:h-6 md:w-6 lg:h-7 lg:w-7">
+                  {key.label}
+                </span>
                 <span className="absolute -left-2 -top-3 h-9 w-9">
                   <img src={key.img} alt={key.value} />
                 </span>
-                <input
-                  type="button"
-                  className="mr-2 h-12 w-12 rounded-lg  border border-primary bg-gray-200 text-center text-xl shadow hover:bg-gray-300"
-                  value={key.label}
-                  onClick={() => handleKeyPress(key)}
-                />
-              </div>
+              </button>
             ))}
           </div>
         ))}
         <div className="flex justify-center">
           <button
-            className="mr-2 rounded-lg border border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300"
+            className="mr-2 aspect-square rounded-lg border border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300"
             onClick={() => {
               enteredKeys.length &&
                 setEnteredKeys((pre) => pre.slice(0, pre.length - 1));
             }}
           >
-            <BackwardIcon className="h-4  w-4 fill-secondary md:h-6 md:w-6 lg:h-8 lg:w-8" />
+            <BackwardIcon className="h-4  w-4 fill-secondary md:h-6 md:w-6 lg:h-7 lg:w-7" />
           </button>
-          <input
-            type="button"
-            className="mr-2 h-12 w-12 grow rounded-lg border border-primary bg-gray-200 text-center text-xl shadow hover:bg-gray-300"
-            value={""}
-            onClick={() => handleKeyPress({ label: " ", value: "space" })}
+          <button
+            className="mr-2 grow rounded-lg border border-primary bg-gray-200 text-center text-xl shadow hover:bg-gray-300"
+            onClick={() =>
+              handleKeyPress({ label: " ", value: "space", img: "" })
+            }
           />
 
           <button
-            className="mr-2 rounded-lg border border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300"
+            className="mr-2 aspect-square rounded-lg border border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300"
             onClick={() => {
               setEnteredKeys([]);
             }}
           >
-            <DeleteIcon className="h-4  w-4 fill-red-500 md:h-6 md:w-6 lg:h-8 lg:w-8" />
+            <DeleteIcon className="h-4  w-4 fill-red-500 md:h-6 md:w-6 lg:h-7 lg:w-7" />
           </button>
         </div>
       </div>
