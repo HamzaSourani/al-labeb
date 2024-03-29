@@ -25,7 +25,7 @@ const TermsAndConditionMainPage = () => {
     <>
       {index === videoSources.length - 1 ? (
         <div className="flex  flex-col items-center  justify-center gap-y-4">
-          <div className="shadow-shadow rounded-lg border  border-secondary  shadow md:w-1/2 lg:w-1/3 ">
+          <div className="rounded-lg border border-secondary  shadow  shadow-shadow md:w-1/2 lg:w-1/3 ">
             <Video src="3.1" />
           </div>
           <div className="flex justify-center">
@@ -49,6 +49,7 @@ const TermsAndConditionMainPage = () => {
             <Video
               src={videoSources[index]}
               onNext={handleNext}
+              validation="unSet"
               previousUrl="/"
             />
           </div>

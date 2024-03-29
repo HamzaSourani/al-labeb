@@ -1,16 +1,17 @@
 import checkNationalNumber from "@/api/nationalNumber";
 import NumericKeyboard from "@/components/ui/NumericKeyboard";
 import Video from "@/components/ui/video";
+import useValidation from "@/hooks/useValidation";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const NationalNumberMainPage = () => {
-  const [disableNextButton, setDisableNextButton] = useState(true);
   const [enteredKeys, setEnteredKeys] = useState<string>("");
   const navigate = useNavigate();
   const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
-  const handleNext = () => {};
+  const isValid = useValidation(enteredKeys.length === 11);
+
   const handleSubmit = async () => {
     const res = await checkNationalNumber({ national_id: enteredKeys });
     if (res?.data && res.data.status) {
@@ -33,14 +34,13 @@ const NationalNumberMainPage = () => {
         <Video
           src="32"
           onNext={handleSubmit}
-          previousUrl="/"
-          // disableNextButton={disableNextButton}
+          validation={isValid}
+          disableNextButton={isValid === "unValid"}
         />
       </div>
       <NumericKeyboard
         enteredKeys={enteredKeys}
         setEnteredKeys={setEnteredKeys}
-        onSubmit={handleSubmit}
       />
     </div>
   );

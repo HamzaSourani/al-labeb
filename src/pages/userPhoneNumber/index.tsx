@@ -3,16 +3,16 @@ import { useNavigate } from "react-router-dom";
 import NumericKeyboard from "@/components/ui/NumericKeyboard";
 import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
+import useValidation from "@/hooks/useValidation";
 
 const UserPhoneNumberPage = () => {
-  const [disableNextButton, setDisableNextButton] = useState(true);
   const [enteredKeys, setEnteredKeys] = useState<string>("");
   const { handleAddInfo, handleAddDepositOrWithdrawalInfo } =
     useUserInfoContext();
+  const isValid = useValidation(enteredKeys.length === 10);
+
   const navigate = useNavigate();
-  const handleNext = () => {
-    navigate("/al-labeb/services");
-  };
+
   const handleSubmit = async () => {
     handleAddInfo({
       key: "phone",
@@ -22,7 +22,6 @@ const UserPhoneNumberPage = () => {
       key: "phone",
       value: enteredKeys,
     });
-    setDisableNextButton(false);
     navigate("/al-labeb/services");
   };
 
@@ -32,14 +31,13 @@ const UserPhoneNumberPage = () => {
         <Video
           src="4.4"
           onNext={handleSubmit}
-          previousUrl="/"
-          // disableNextButton={disableNextButton}
+          validation={isValid}
+          disableNextButton={isValid === "unValid"}
         />
       </div>
       <NumericKeyboard
         enteredKeys={enteredKeys}
         setEnteredKeys={setEnteredKeys}
-        onSubmit={handleSubmit}
       />
     </div>
   );

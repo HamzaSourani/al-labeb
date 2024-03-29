@@ -4,15 +4,15 @@ import NumericKeyboard from "@/components/ui/NumericKeyboard";
 import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import checkNationalNumber from "@/api/nationalNumber";
+import useValidation from "@/hooks/useValidation";
 
 const IBANPage = () => {
-  const [disableNextButton, setDisableNextButton] = useState(true);
   const [enteredKeys, setEnteredKeys] = useState<string>("");
   const { depositOrWithdrawalInfo, handleAddDepositOrWithdrawalInfo } =
     useUserInfoContext();
-  console.log(depositOrWithdrawalInfo);
+  const isValid = useValidation(enteredKeys.length === 9);
+
   const navigate = useNavigate();
-  const handleNext = () => {};
   const handleSubmit = async () => {
     const res = await checkNationalNumber({
       national_id: depositOrWithdrawalInfo.national_id,
@@ -37,8 +37,6 @@ const IBANPage = () => {
     } else {
       navigate("/al-labeb/services/IBAN/re-enter-national-number");
     }
-
-    setDisableNextButton(false);
   };
 
   return (
@@ -47,14 +45,13 @@ const IBANPage = () => {
         <Video
           src="4.1"
           onNext={handleSubmit}
-          previousUrl="/"
-          // disableNextButton={disableNextButton}
+          validation={isValid}
+          disableNextButton={isValid === "unValid"}
         />
       </div>
       <NumericKeyboard
         enteredKeys={enteredKeys}
         setEnteredKeys={setEnteredKeys}
-        onSubmit={handleSubmit}
       />
     </div>
   );

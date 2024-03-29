@@ -4,22 +4,20 @@ import Keyboard from "@/components/ui/keyboard";
 import { Key } from "@/components/ui/keyboard/type";
 import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
+import useValidation from "@/hooks/useValidation";
 
-const WorkLocationPage = () => {
+const WorkFieldPage = () => {
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
-  const [disableNextButton, setDisableNextButton] = useState(true);
 
   const { handleAddInfo } = useUserInfoContext();
   const navigate = useNavigate();
-  const handleNext = () => {
-    navigate("/al-labeb/open-account/work-status/salary");
-  };
+  const isValid = useValidation(enteredKeys.length > 2);
+
   const handleSubmit = () => {
     handleAddInfo({
       key: "working_field",
       value: enteredKeys.map((key) => key.label).join(""),
     });
-    setDisableNextButton(false);
     navigate("/al-labeb/open-account/work-status/salary");
   };
   return (
@@ -28,17 +26,13 @@ const WorkLocationPage = () => {
         <Video
           src="45"
           onNext={handleSubmit}
-          previousUrl="/"
-          // disableNextButton={disableNextButton}
+          validation={isValid}
+          disableNextButton={isValid === "unValid"}
         />
       </div>
-      <Keyboard
-        enteredKeys={enteredKeys}
-        setEnteredKeys={setEnteredKeys}
-        onSubmit={handleSubmit}
-      />
+      <Keyboard enteredKeys={enteredKeys} setEnteredKeys={setEnteredKeys} />
     </div>
   );
 };
 
-export default WorkLocationPage;
+export default WorkFieldPage;

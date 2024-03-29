@@ -4,22 +4,20 @@ import Keyboard from "@/components/ui/keyboard";
 import { Key } from "@/components/ui/keyboard/type";
 import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
+import useValidation from "@/hooks/useValidation";
 
 const SpouseLastNamePage = () => {
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
-  const [disableNextButton, setDisableNextButton] = useState(true);
 
   const { handleAddInfo } = useUserInfoContext();
   const navigate = useNavigate();
-  const handleNext = () => {
-    navigate("/al-labeb/open-account/number-of-children");
-  };
+  const isValid = useValidation(enteredKeys.length > 2);
+
   const handleSubmit = () => {
     handleAddInfo({
       key: "spouse_lastname",
       value: enteredKeys.map((key) => key.label).join(""),
     });
-    setDisableNextButton(false);
     navigate("/al-labeb/open-account/number-of-children");
   };
   return (
@@ -28,15 +26,11 @@ const SpouseLastNamePage = () => {
         <Video
           src="3.4.2"
           onNext={handleSubmit}
-          previousUrl="/"
-          // disableNextButton={disableNextButton}
+          validation={isValid}
+          disableNextButton={isValid === "unValid"}
         />
       </div>
-      <Keyboard
-        enteredKeys={enteredKeys}
-        setEnteredKeys={setEnteredKeys}
-        onSubmit={handleSubmit}
-      />
+      <Keyboard enteredKeys={enteredKeys} setEnteredKeys={setEnteredKeys} />
     </div>
   );
 };

@@ -3,10 +3,13 @@ import { useUserInfoContext } from "@/hooks/usUserInfo";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
+import useValidation from "@/hooks/useValidation";
 const ServicesPage = () => {
   const [selectedService, setSelectedService] = useState("2");
   const navigate = useNavigate();
   const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
+  const isValid = useValidation(selectedService !== "2");
+
   const SERVICES = ["3", "4", "40"];
   const handleNext = () => {
     switch (selectedService) {
@@ -31,8 +34,7 @@ const ServicesPage = () => {
         <Video
           src={selectedService}
           onNext={handleNext}
-          previousUrl="/"
-          disableNextButton={selectedService === "2"}
+          disableNextButton={isValid === "unValid"}
         />
       </div>
       <div className="flex max-h-[calc(100vh_-_120px)] snap-y snap-mandatory  flex-col gap-y-4 self-start overflow-auto ">

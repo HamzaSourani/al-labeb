@@ -1,15 +1,15 @@
-import React, { useRef, useState } from "react";
-import VideoProps from "./type";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import classNames from "classnames";
 import NextIcon from "@/components/svg/next";
 import PauseIcon from "@/components/svg/pause";
 import PlayIcon from "@/components/svg/play";
 import RefreshIcon from "@/components/svg/refresh";
+import VideoProps from "./type";
 
-const Video = ({ src, onNext, previousUrl, disableNextButton }: VideoProps) => {
+const Video = ({ src, disableNextButton, validation, onNext }: VideoProps) => {
   const [status, setStatus] = useState(true);
+  const [goNext, setGoNext] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null!);
-  const navigate = useNavigate();
   const handlePlayPause = () => {
     if (status) {
       videoRef.current.pause();
@@ -24,34 +24,42 @@ const Video = ({ src, onNext, previousUrl, disableNextButton }: VideoProps) => {
     videoRef.current.play();
   };
 
-  const handlePrevious = () => {
-    navigate(previousUrl!);
+  const handleVideoEnd = () => {
+    if (validation === "unSet" || validation === "valid") setGoNext(true);
+    else setGoNext(false);
   };
+
+  useEffect(() => {
+    if (validation === "valid") setGoNext(true);
+    else setGoNext(false);
+  }, [validation]);
+
   return (
     <div className="flex h-full w-full flex-col gap-4 overflow-hidden rounded-lg shadow-sm shadow-gray-300">
       <div className="overflow-hidden rounded-t-lg border border-primary">
         <video
           ref={videoRef}
           className="aspect-square"
+          onEnded={handleVideoEnd}
           src={`/assets/videos/${src}.mp4`}
           autoPlay
         />
       </div>
       <div className="grid  p-4 [grid-template-columns:auto_1fr]">
-        {/* {previousUrl&&<button
-          className="flex flex-col justify-center items-center hover:scale-105 transition-transform"
-          onClick={handlePrevious}
-        >
-          <img src="/assets/images/previous.png" alt="previous" />
-          <p>السابق</p>
-        </button>} */}
         {onNext && (
           <button
-            className="flex flex-col items-center justify-center transition-transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"
+            className=" flex flex-col items-center justify-center transition-transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"
             onClick={onNext}
             disabled={disableNextButton}
           >
-            <NextIcon className="h-6  w-6 fill-primary md:h-8 md:w-8 lg:h-10 lg:w-10" />
+            <NextIcon
+              className={classNames(
+                "h-6  w-6 fill-primary md:h-8 md:w-8 lg:h-10 lg:w-10",
+                {
+                  "animate-go-next": goNext,
+                },
+              )}
+            />
           </button>
         )}
         <div className="flex items-center justify-center gap-x-4">

@@ -12,7 +12,7 @@ const ReEnterNationalNumberPage = () => {
         {
           //TODO change video to re enter national number
         }
-        <Video src="0" onNext={handleNext} previousUrl="/" />
+        <Video src="0" onNext={handleNext} validation="unSet" />
       </div>
     </div>
   );

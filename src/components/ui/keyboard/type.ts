@@ -7,6 +7,5 @@ export interface Key {
 interface KeyboardProps {
   enteredKeys: Key[];
   setEnteredKeys: Dispatch<SetStateAction<Key[]>>;
-  onSubmit: () => void;
 }
 export default KeyboardProps;

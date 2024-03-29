@@ -3,6 +3,7 @@ import { useUserInfoContext } from "@/hooks/usUserInfo";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
+import useValidation from "@/hooks/useValidation";
 
 const UnEmployReasonPage = () => {
   const [selectedService, setSelectedService] = useState({
@@ -10,6 +11,8 @@ const UnEmployReasonPage = () => {
     value: "",
   });
   const navigate = useNavigate();
+  const isValid = useValidation(selectedService.videoSrc !== "43");
+
   const { handleAddInfo } = useUserInfoContext();
   const CLIENT_STATUSES = [
     { videoSrc: "43.1", value: "طالب" },
@@ -27,8 +30,8 @@ const UnEmployReasonPage = () => {
           <Video
             src={selectedService.videoSrc}
             onNext={handleNext}
-            previousUrl="/"
-            disableNextButton={selectedService.videoSrc === "43"}
+            validation={isValid}
+            disableNextButton={isValid === "unValid"}
           />
         </div>
         <div className="flex max-h-[calc(100vh_-_120px)] snap-y snap-mandatory  flex-col gap-y-4 self-start overflow-auto ">

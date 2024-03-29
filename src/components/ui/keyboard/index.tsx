@@ -2,7 +2,7 @@ import BackwardIcon from "@/components/svg/backward";
 import DeleteIcon from "@/components/svg/delete";
 import KeyboardProps, { Key } from "./type";
 
-const Keyboard = ({ enteredKeys, setEnteredKeys, onSubmit }: KeyboardProps) => {
+const Keyboard = ({ enteredKeys, setEnteredKeys }: KeyboardProps) => {
   const handleKeyPress = (key: Key) => {
     setEnteredKeys((pre) => [...pre, key]);
   };

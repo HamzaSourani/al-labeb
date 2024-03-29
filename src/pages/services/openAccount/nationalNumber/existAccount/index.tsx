@@ -9,7 +9,7 @@ const ExistAccountPage = () => {
   return (
     <div className=" flex  items-center justify-center">
       <div className="md:w-1/2 lg:w-1/3 ">
-        <Video src="33" onNext={handleNext} previousUrl="/" />
+        <Video src="33" onNext={handleNext} validation="unSet" />
       </div>
     </div>
   );

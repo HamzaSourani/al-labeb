@@ -5,7 +5,7 @@ const EndPage = () => {
   return (
     <div className=" flex  items-center justify-center">
       <div className="md:w-1/2 lg:w-1/3 ">
-        <Video src="30" previousUrl="/" />
+        <Video src="30" />
       </div>
       <div>
         <Link to={"/"}>العودة إلى القائمة للرئيسة</Link>

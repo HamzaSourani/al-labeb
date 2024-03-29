@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Keyboard from "@/components/ui/keyboard";
 import { Key } from "@/components/ui/keyboard/type";
 import Video from "@/components/ui/video";
 import VideoPlaylist from "@/components/ui/videoPlayList";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
+import useValidation from "@/hooks/useValidation";
 
 const UserNamePage = () => {
   const [readEnteredCharacters, setReadEnteredCharacters] = useState(false);
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const { handleAddInfo } = useUserInfoContext();
-  const navigate = useNavigate();
-  const handleNext = () => {
-    navigate("/al-labeb/user-phone");
-  };
+  const isValid = useValidation(
+    enteredKeys.length > 3 && enteredKeys.length < 50,
+  );
+
   const handleSubmit = () => {
     setReadEnteredCharacters(true);
     handleAddInfo({
@@ -37,14 +37,11 @@ const UserNamePage = () => {
               src="47"
               onNext={handleSubmit}
               previousUrl="/"
-              // disableNextButton={true}
+              validation={isValid}
+              disableNextButton={isValid === "unValid"}
             />
           </div>
-          <Keyboard
-            enteredKeys={enteredKeys}
-            setEnteredKeys={setEnteredKeys}
-            onSubmit={handleSubmit}
-          />
+          <Keyboard enteredKeys={enteredKeys} setEnteredKeys={setEnteredKeys} />
         </>
       )}
     </div>

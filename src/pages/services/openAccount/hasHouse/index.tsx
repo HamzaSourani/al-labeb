@@ -1,9 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import NoIcon from "@/components/svg/no";
 import YesIcon from "@/components/svg/yes";
 import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
-import React from "react";
-import { useNavigate } from "react-router-dom";
 
 const HasHousePage = () => {
   const navigate = useNavigate();
@@ -25,7 +24,7 @@ const HasHousePage = () => {
   };
   return (
     <div className="flex  flex-col items-center  justify-center gap-y-4">
-      <div className="shadow-shadow rounded-lg border  border-secondary  shadow md:w-1/2 lg:w-1/3 ">
+      <div className="rounded-lg border border-secondary  shadow  shadow-shadow md:w-1/2 lg:w-1/3 ">
         <Video src="3.6" />
       </div>
       <div className="flex justify-center">

@@ -3,7 +3,6 @@ import NumericKeyboardProps from "./type";
 const NumericKeyboard = ({
   enteredKeys,
   setEnteredKeys,
-  onSubmit,
 }: NumericKeyboardProps) => {
   const handleKeyPress = (key: string) => {
     setEnteredKeys((pre) => pre + key);

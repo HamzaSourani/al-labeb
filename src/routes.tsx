@@ -70,8 +70,8 @@ const UnEmployReasonPage = lazy(
 const WorkNamePage = lazy(
   () => import("@/pages/services/openAccount/workStatus/name"),
 );
-const WorkLocationPage = lazy(
-  () => import("@/pages/services/openAccount/workStatus/location"),
+const WorkFieldPage = lazy(
+  () => import("@/pages/services/openAccount/workStatus/workField"),
 );
 const SalaryPage = lazy(
   () => import("@/pages/services/openAccount/workStatus/salary"),
@@ -208,8 +208,8 @@ const Routes = () => {
             element={<WorkNamePage />}
           />
           <Route
-            path="open-account/work-status/location"
-            element={<WorkLocationPage />}
+            path="open-account/work-status/work-field"
+            element={<WorkFieldPage />}
           />
           <Route
             path="open-account/work-status/salary"

@@ -11,3 +11,17 @@
   background-color: #d0b372;
   border-radius: 1rem;
 }
+.go-next {
+  animation: go-next-animation 2s ease-in-out infinite;
+}
+@keyframes go-next-animation {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
