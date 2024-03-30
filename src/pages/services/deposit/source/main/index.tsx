@@ -6,14 +6,21 @@ import classNames from "classnames";
 import useValidation from "@/hooks/useValidation";
 
 const DepositSourcePage = () => {
-  const [selectedService, setSelectedService] = useState("27");
+  const [selectedSource, setSelectedSource] = useState({
+    src: "27",
+    label: "",
+  });
   const navigate = useNavigate();
   const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
-  const SERVICES = ["27.1", "27.2", "27.3"];
-  const isValid = useValidation(selectedService === "27");
+  const SOURCES = [
+    { src: "27.1", label: "ادخار" },
+    { src: "27.2", label: "راتب" },
+    { src: "27.3", label: "عائدات عمل تجاري" },
+  ];
+  const isValid = useValidation(selectedSource.src !== "27");
 
   const handleNext = () => {
-    switch (selectedService) {
+    switch (selectedSource.src) {
       case "27.1":
         handleAddDepositOrWithdrawalInfo({
           key: "source",
@@ -36,32 +43,43 @@ const DepositSourcePage = () => {
   };
   return (
     <div>
-      <div className="flex   items-center justify-center gap-4">
+      <div className="flex justify-center gap-4">
         <div className="  md:w-1/2 lg:w-1/3 ">
           <Video
-            src={selectedService}
+            src={selectedSource.src}
             onNext={handleNext}
             validation={isValid}
             disableNextButton={isValid === "unValid"}
           />
         </div>
         <div className="flex max-h-[calc(100vh_-_120px)] snap-y snap-mandatory  flex-col gap-y-4 self-start overflow-auto ">
-          {SERVICES.map((service) => (
+          {SOURCES.map((source) => (
             <div
-              key={service}
+              key={source.src}
               className={classNames(
                 "snap-start border shadow transition-all hover:cursor-pointer",
                 {
-                  "border-primary ": service === selectedService,
-                  "border-secondary ": service !== selectedService,
+                  "border-primary ": source.src === selectedSource.src,
+                  "border-secondary ": source.src !== selectedSource.src,
                 },
               )}
-              onClick={() => setSelectedService(service)}
+              onClick={() => setSelectedSource(source)}
             >
-              <video
-                src={`/assets/videos/${service}.mp4`}
-                className="aspect-square w-52 "
-              />
+              <figure>
+                <img
+                  src={`/assets/images/thumbnail/${source.src}.png`}
+                  className="aspect-square w-52 "
+                  alt=""
+                />
+                <figcaption
+                  className={classNames("py-2 text-center font-semibold", {
+                    "text-primary ": source.src === selectedSource.src,
+                    "text-secondary ": source.src !== selectedSource.src,
+                  })}
+                >
+                  {source.label}
+                </figcaption>
+              </figure>
             </div>
           ))}
         </div>

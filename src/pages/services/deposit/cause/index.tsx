@@ -5,16 +5,26 @@ import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import useValidation from "@/hooks/useValidation";
 
-const DepositSourcePage = () => {
-  const [selectedService, setSelectedService] = useState("26");
+const DepositCausePage = () => {
+  const [selectedCause, setSelectedCause] = useState({
+    src: "26",
+    label: "",
+  });
   const navigate = useNavigate();
   const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
-  const isValid = useValidation(selectedService === "26");
+  const isValid = useValidation(selectedCause.src !== "26");
 
-  const SERVICES = ["26.1", "26.2", "26.3", "26.4", "26.5", "26.6"];
+  const CAUSES = [
+    { src: "26.1", label: "ادخار" },
+    { src: "26.2", label: "تغزية حساب" },
+    { src: "26.3", label: "سداد التزام" },
+    { src: "26.4", label: "قسط" },
+    { src: "26.5", label: "عمولات" },
+    { src: "26.5", label: "قيمة فاتورة" },
+  ];
 
   const handleNext = () => {
-    switch (selectedService) {
+    switch (selectedCause.src) {
       case "26.1":
         handleAddDepositOrWithdrawalInfo({
           key: "cause",
@@ -59,32 +69,43 @@ const DepositSourcePage = () => {
   };
   return (
     <div>
-      <div className="flex   items-center justify-center gap-4">
+      <div className="flex  justify-center gap-4">
         <div className="  md:w-1/2 lg:w-1/3 ">
           <Video
-            src={selectedService}
+            src={selectedCause.src}
             onNext={handleNext}
             validation={isValid}
             disableNextButton={isValid === "unValid"}
           />
         </div>
         <div className="flex max-h-[calc(100vh_-_120px)] snap-y snap-mandatory  flex-col gap-y-4 self-start overflow-auto ">
-          {SERVICES.map((service) => (
+          {CAUSES.map((cause) => (
             <div
-              key={service}
+              key={cause.src}
               className={classNames(
                 "snap-start border shadow transition-all hover:cursor-pointer",
                 {
-                  "border-primary ": service === selectedService,
-                  "border-secondary ": service !== selectedService,
+                  "border-primary ": cause.src === selectedCause.src,
+                  "border-secondary ": cause.src !== selectedCause.src,
                 },
               )}
-              onClick={() => setSelectedService(service)}
+              onClick={() => setSelectedCause(cause)}
             >
-              <video
-                src={`/assets/videos/${service}.mp4`}
-                className="aspect-square w-52 "
-              />
+              <figure>
+                <img
+                  src={`/assets/images/thumbnail/${cause.src}.png`}
+                  className="aspect-square w-52 "
+                  alt=""
+                />
+                <figcaption
+                  className={classNames("py-2 text-center font-semibold", {
+                    "text-primary ": cause.src === selectedCause.src,
+                    "text-secondary ": cause.src !== selectedCause.src,
+                  })}
+                >
+                  {cause.label}
+                </figcaption>
+              </figure>
             </div>
           ))}
         </div>
@@ -93,4 +114,4 @@ const DepositSourcePage = () => {
   );
 };
 
-export default DepositSourcePage;
+export default DepositCausePage;

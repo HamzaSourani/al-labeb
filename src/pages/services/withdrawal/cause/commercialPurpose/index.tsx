@@ -6,14 +6,23 @@ import classNames from "classnames";
 import useValidation from "@/hooks/useValidation";
 
 const CommercialPurposePage = () => {
-  const [selectedService, setSelectedService] = useState("29");
+  const [selectedPurpose, setSelectedPurpose] = useState({
+    src: "29",
+    label: "",
+  });
   const navigate = useNavigate();
   const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
-  const SERVICES = ["28.1", "28.2", "28.3", "28.4", "28.5"];
-  const isValid = useValidation(selectedService !== "29");
+  const PURPOSES = [
+    { src: "28.1", label: "مواد غزائية" },
+    { src: "28.2", label: "خدمات اتصالات" },
+    { src: "28.3", label: "مواد بلاستيكية" },
+    { src: "28.4", label: "البسة" },
+    { src: "28.5", label: "أخرى" },
+  ] as const;
+  const isValid = useValidation(selectedPurpose.src !== "29");
 
   const handleNext = () => {
-    switch (selectedService) {
+    switch (selectedPurpose.src) {
       case "28.1":
         handleAddDepositOrWithdrawalInfo({
           key: "cause",
@@ -43,7 +52,7 @@ const CommercialPurposePage = () => {
       case "28.5":
         handleAddDepositOrWithdrawalInfo({
           key: "cause",
-          value: "اغراض تجارية، مواد تجميل",
+          value: "اغراض تجارية، أخرى",
         });
 
         break;
@@ -52,30 +61,30 @@ const CommercialPurposePage = () => {
   };
   return (
     <div>
-      <div className="flex   items-center justify-center gap-4">
+      <div className="flex justify-center gap-4">
         <div className="  md:w-1/2 lg:w-1/3 ">
           <Video
-            src={selectedService}
+            src={selectedPurpose.src}
             onNext={handleNext}
             validation={isValid}
             disableNextButton={isValid === "unValid"}
           />
         </div>
         <div className="flex max-h-[calc(100vh_-_120px)] snap-y snap-mandatory  flex-col gap-y-4 self-start overflow-auto ">
-          {SERVICES.map((service) => (
+          {PURPOSES.map((purpose) => (
             <div
-              key={service}
+              key={purpose.src}
               className={classNames(
                 "snap-start border shadow transition-all hover:cursor-pointer",
                 {
-                  "border-primary ": service === selectedService,
-                  "border-secondary ": service !== selectedService,
+                  "border-primary ": purpose.src === selectedPurpose.src,
+                  "border-secondary ": purpose.src !== selectedPurpose.src,
                 },
               )}
-              onClick={() => setSelectedService(service)}
+              onClick={() => setSelectedPurpose(purpose)}
             >
               <video
-                src={`/assets/videos/${service}.mp4`}
+                src={`/assets/videos/${purpose}.mp4`}
                 className="aspect-square w-52 "
               />
             </div>
