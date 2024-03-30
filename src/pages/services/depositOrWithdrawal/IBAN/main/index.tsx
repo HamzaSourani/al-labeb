@@ -16,7 +16,7 @@ const IBANPage = () => {
   const navigate = useNavigate();
   const handleSubmit = async () => {
     const res = await checkNationalNumber({
-      national_id: depositOrWithdrawalInfo.national_id,
+      national_id: depositOrWithdrawalInfo.client,
       account_id: enteredKeys.map((key) => key.value).join(""),
     });
     if (res?.data && res.data.status) {

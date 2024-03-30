@@ -16,7 +16,7 @@ const TermsAndConditionMainPage = () => {
     }
   };
   const handleGoToNationalNumber = () => {
-    navigate("/al-labeb/open-account/national-number");
+    navigate("/al-labeb/open-account/mother-first-name");
   };
   const handleGoToEndPage = () => {
     navigate("/al-labeb/end");

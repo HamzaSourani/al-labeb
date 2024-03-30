@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const ReEnterNationalNumberPage = () => {
   const navigate = useNavigate();
   const handleNext = () => {
-    navigate("/al-labeb/services/national-number");
+    navigate("/al-labeb/national-number");
   };
   return (
     <div className=" flex  items-center justify-center">

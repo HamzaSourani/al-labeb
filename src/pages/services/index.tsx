@@ -5,14 +5,20 @@ import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import useValidation from "@/hooks/useValidation";
 const ServicesPage = () => {
-  const [selectedService, setSelectedService] = useState("2");
+  const [selectedService, setSelectedService] = useState({
+    src: "2",
+    label: "",
+  });
   const navigate = useNavigate();
   const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
-  const isValid = useValidation(selectedService !== "2");
+  const isValid = useValidation(selectedService.src !== "2");
 
-  const SERVICES = ["3", "4", "40"];
+  const SERVICES = [
+    { src: "4", label: "خدمة الإداع" },
+    { src: "40", label: "خدمة السحب" },
+  ];
   const handleNext = () => {
-    switch (selectedService) {
+    switch (selectedService.src) {
       case "4":
         handleAddDepositOrWithdrawalInfo({
           key: "service_name",
@@ -26,34 +32,46 @@ const ServicesPage = () => {
         });
         break;
     }
-    navigate(selectedService);
+    navigate(selectedService.src);
   };
   return (
-    <div className="flex   items-center justify-center gap-4">
+    <div className="flex justify-center gap-4">
       <div className="  md:w-1/2 lg:w-1/3 ">
         <Video
-          src={selectedService}
+          src={selectedService.src}
           onNext={handleNext}
+          validation={isValid}
           disableNextButton={isValid === "unValid"}
         />
       </div>
-      <div className="flex max-h-[calc(100vh_-_120px)] snap-y snap-mandatory  flex-col gap-y-4 self-start overflow-auto ">
+      <div className="flex flex-col gap-y-4 self-start overflow-auto ">
         {SERVICES.map((service) => (
           <div
-            key={service}
+            key={service.src}
             className={classNames(
               "snap-start border shadow transition-all hover:cursor-pointer",
               {
-                "border-primary ": service === selectedService,
-                "border-secondary ": service !== selectedService,
+                "border-primary ": service.src === selectedService.src,
+                "border-secondary ": service.src !== selectedService.src,
               },
             )}
             onClick={() => setSelectedService(service)}
           >
-            <video
-              src={`/assets/videos/${service}.mp4`}
-              className="aspect-square w-52 "
-            />
+            <figure>
+              <img
+                src={`/assets/images/thumbnail/${service.src}.png`}
+                className="aspect-square w-52 "
+                alt=""
+              />
+              <figcaption
+                className={classNames("py-2 text-center font-semibold", {
+                  "text-primary ": service.src === selectedService.src,
+                  "text-secondary ": service.src !== selectedService.src,
+                })}
+              >
+                {service.label}
+              </figcaption>
+            </figure>
           </div>
         ))}
       </div>

@@ -80,16 +80,13 @@ const EndOpenAccountFlowPage = lazy(
   () => import("@/pages/services/openAccount/endFlow"),
 );
 const CheckNationalNumberPage = lazy(
-  () => import("@/pages/services/depositOrWithdrawal/nationalNumber/main"),
+  () => import("@/pages/nationalNumber/main"),
 );
 const IBANPage = lazy(
   () => import("@/pages/services/depositOrWithdrawal/IBAN/main"),
 );
 const UnExistAccountPage = lazy(
-  () =>
-    import(
-      "@/pages/services/depositOrWithdrawal/nationalNumber/unExistAccount"
-    ),
+  () => import("@/pages/nationalNumber/unExistAccount"),
 );
 
 const ReEnterNationalNumberPage = lazy(
@@ -158,10 +155,7 @@ const Routes = () => {
             path="open-account/terms-and-conditions/refuse"
             element={<RefuseTermsAndConditionsPage />}
           />
-          <Route
-            path="open-account/national-number"
-            element={<NationalNumberMainPage />}
-          />
+
           <Route
             path="open-account/exist-account"
             element={<ExistAccountPage />}
@@ -216,12 +210,9 @@ const Routes = () => {
             element={<SalaryPage />}
           />
           <Route path="open-account/end" element={<EndOpenAccountFlowPage />} />
+          <Route path="national-number" element={<CheckNationalNumberPage />} />
           <Route
-            path="services/national-number"
-            element={<CheckNationalNumberPage />}
-          />
-          <Route
-            path="services/national-number/un-exist"
+            path="national-number/un-exist"
             element={<UnExistAccountPage />}
           />
 

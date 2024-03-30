@@ -10,7 +10,8 @@ import { Key } from "@/components/ui/NumericKeyboard/type";
 const NationalNumberMainPage = () => {
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const navigate = useNavigate();
-  const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
+  const { handleAddInfo, handleAddDepositOrWithdrawalInfo } =
+    useUserInfoContext();
   const isValid = useValidation(enteredKeys.length === 11);
 
   const handleSubmit = async () => {
@@ -22,13 +23,13 @@ const NationalNumberMainPage = () => {
         key: "client",
         value: enteredKeys,
       });
-      handleAddDepositOrWithdrawalInfo({
+      handleAddInfo({
         key: "national_id",
         value: enteredKeys,
       });
-      navigate("/al-labeb/services/IBAN");
+      navigate("/al-labeb/services");
     } else {
-      navigate("/al-labeb/services/national-number/un-exist");
+      navigate("/al-labeb/national-number/un-exist");
     }
   };
   return (

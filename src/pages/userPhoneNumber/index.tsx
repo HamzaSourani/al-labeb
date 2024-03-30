@@ -23,7 +23,7 @@ const UserPhoneNumberPage = () => {
       key: "phone",
       value: enteredKeys.map((key) => key.value).join(""),
     });
-    navigate("/al-labeb/services");
+    navigate("/al-labeb/national-number");
   };
 
   return (

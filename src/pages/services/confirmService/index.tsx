@@ -11,9 +11,6 @@ const ConfirmServicePage = () => {
   const navigate = useNavigate();
   const handleServiceUrl = () => {
     switch (id) {
-      case "3":
-        navigate("/al-labeb/open-account");
-        break;
       case "4":
         navigate("/al-labeb/deposit");
         break;
@@ -34,7 +31,7 @@ const ConfirmServicePage = () => {
 
   return (
     <div className="flex  flex-col items-center   justify-center gap-y-4">
-      <div className="shadow-shadow rounded-lg border  border-secondary  shadow md:w-1/2 lg:w-1/3 ">
+      <div className="rounded-lg border border-secondary  shadow  shadow-shadow md:w-1/2 lg:w-1/3 ">
         <VideoPlaylist videoSources={videoSources} />
       </div>
       <div className="flex justify-center">

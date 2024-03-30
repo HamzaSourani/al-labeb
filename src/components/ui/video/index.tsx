@@ -42,7 +42,6 @@ const Video = ({ src, disableNextButton, validation, onNext }: VideoProps) => {
           className="aspect-square"
           onEnded={handleVideoEnd}
           src={`/assets/videos/${src}.mp4`}
-          autoPlay
         />
       </div>
       <div className="grid  p-4 [grid-template-columns:auto_1fr]">
