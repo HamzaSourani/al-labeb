@@ -12,19 +12,19 @@ const NumericKeyboard = ({
 
   const keyboardLayout = [
     [
-      { value: "1", img: "" },
-      { value: "2", img: "" },
-      { value: "3", img: "" },
+      { value: "1", img: "/assets/images/letters/1.png" },
+      { value: "2", img: "/assets/images/letters/2.png" },
+      { value: "3", img: "/assets/images/letters/3.png" },
     ],
     [
-      { value: "4", img: "" },
-      { value: "5", img: "" },
-      { value: "6", img: "" },
+      { value: "4", img: "/assets/images/letters/4.png" },
+      { value: "5", img: "/assets/images/letters/5.png" },
+      { value: "6", img: "/assets/images/letters/6.png" },
     ],
     [
-      { value: "7", img: "" },
-      { value: "8", img: "" },
-      { value: "9", img: "" },
+      { value: "7", img: "/assets/images/letters/7.png" },
+      { value: "8", img: "/assets/images/letters/8.png" },
+      { value: "9", img: "/assets/images/letters/9.png" },
     ],
   ];
 
@@ -67,13 +67,18 @@ const NumericKeyboard = ({
             </button>
             <button
               className="relative mr-2 rounded-lg border  border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300"
-              onClick={() => handleKeyPress({ value: "0", img: "" })}
+              onClick={() =>
+                handleKeyPress({
+                  value: "0",
+                  img: "/assets/images/letters/0.png",
+                })
+              }
             >
               <span className="inline-block h-4  w-4  md:h-6 md:w-6 lg:h-7 lg:w-7">
                 0{" "}
               </span>
               <span className="absolute -left-2 -top-3 h-9 w-9">
-                <img src={""} alt={""} />
+                <img src={"/assets/images/letters/0.png"} alt={"0"} />
               </span>
             </button>
 
