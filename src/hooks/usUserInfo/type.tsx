@@ -44,4 +44,5 @@ export interface UserInfoContextType {
     key,
     value,
   }: HandleAddDepositOrWithdrawalInfoParams) => void;
+  handleReset: () => void;
 }
