@@ -24,15 +24,16 @@ const ServicesPage = () => {
           key: "service_name",
           value: "إيداع",
         });
+        navigate("/al-labeb/deposit");
         break;
       case "40":
         handleAddDepositOrWithdrawalInfo({
           key: "service_name",
           value: "سحب",
         });
+        navigate("/al-labeb/withdrawal");
         break;
     }
-    navigate(selectedService.src);
   };
   return (
     <div className="flex justify-center gap-4">

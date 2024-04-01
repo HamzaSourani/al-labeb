@@ -18,7 +18,7 @@ const SpouseFirstNamePage = () => {
       key: "spouse_firstname",
       value: enteredKeys.map((key) => key.label).join(""),
     });
-    navigate("/al-labeb/open-account/spouse-last-name");
+    navigate("/al-labeb/open-account/marital-status/spouse-last-name");
   };
   return (
     <div className="flex  flex-col  items-center justify-around  md:flex-row">

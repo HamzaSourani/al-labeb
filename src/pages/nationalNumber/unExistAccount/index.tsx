@@ -7,18 +7,16 @@ const ExistAccountPage = () => {
   const navigate = useNavigate();
 
   const handlePositiveCase = () => {
-    navigate(-1);
-  };
-  const handleNegativeCase = () => {
     navigate("/al-labeb/open-account");
   };
-
-  //TODO ask for open account video
+  const handleNegativeCase = () => {
+    navigate(-1);
+  };
 
   return (
     <div className="flex  flex-col items-center  justify-center gap-y-4">
-      <div className="shadow-shadow rounded-lg border  border-secondary  shadow md:w-1/2 lg:w-1/3 ">
-        <Video src="3.6" />
+      <div className="rounded-lg border border-secondary  shadow  shadow-shadow md:w-1/2 lg:w-1/3 ">
+        <Video src="49" />
       </div>
       <div className="flex justify-center">
         <button

@@ -51,7 +51,7 @@ const NumericKeyboard = ({
   return (
     <div className="flex flex-col items-center gap-y-4">
       <div className="flex gap-x-4">
-        <output className="min-h-12 w-96 rounded-lg  border  border-gray-300 px-4 py-2 text-lg font-semibold shadow-md">
+        <output className="min-h-12 w-96 rounded-lg  border  border-gray-300 px-4 py-2 text-lg font-semibold shadow-sm">
           {enteredKeys.map((key) => key.value)}
         </output>
       </div>

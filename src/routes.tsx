@@ -13,9 +13,7 @@ const GreetingPage = lazy(() => import("@/pages/greeting"));
 const UserNamePage = lazy(() => import("@/pages/userName"));
 const UserPhoneNumberPage = lazy(() => import("@/pages/userPhoneNumber"));
 const ServicesPage = lazy(() => import("@/pages/services"));
-const ConfirmServicePage = lazy(
-  () => import("@/pages/services/confirmService"),
-);
+
 const OpenAccountMainPage = lazy(
   () => import("@/pages/services/openAccount/main"),
 );
@@ -137,7 +135,6 @@ const Routes = () => {
           <Route path="user-name" element={<UserNamePage />} />
           <Route path="user-phone" element={<UserPhoneNumberPage />} />
           <Route path="services" element={<ServicesPage />} />
-          <Route path="services/:id" element={<ConfirmServicePage />} />
           <Route path="open-account" element={<OpenAccountMainPage />} />
           <Route
             path="open-account/saving-account"

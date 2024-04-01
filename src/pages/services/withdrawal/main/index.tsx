@@ -4,7 +4,7 @@ import Video from "@/components/ui/video";
 const WithdrawalMainPage = () => {
   const navigate = useNavigate();
   const handleNext = () => {
-    navigate("/al-labeb/services/national-number");
+    navigate("/al-labeb/services/IBAN");
   };
   return (
     <div className=" flex  items-center justify-center">
