@@ -64,7 +64,6 @@ const Keyboard = ({ enteredKeys, setEnteredKeys }: KeyboardProps) => {
         img: "/assets/images/letters/alefMadeh.png",
       },
       { label: "ال", value: "al", img: "/assets/images/letters/al.png" },
-      { label: "ي", value: "ya", img: "/assets/images/letters/ya.png" },
       {
         label: "ئ",
         value: "yaaHamzeh",
