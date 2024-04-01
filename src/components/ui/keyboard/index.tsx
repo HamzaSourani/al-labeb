@@ -9,42 +9,50 @@ const Keyboard = ({ enteredKeys, setEnteredKeys }: KeyboardProps) => {
 
   const keyboardLayout = [
     [
-      { label: "ض", value: "dad", img: "/assets/images/letters/dad.png" },
-      { label: "ص", value: "sad", img: "/assets/images/letters/sad.png" },
-      { label: "ث", value: "tha", img: "/assets/images/letters/tha.png" },
-      { label: "ق", value: "kaf", img: "/assets/images/letters/kaf.png" },
-      { label: "ف", value: "fa", img: "/assets/images/letters/fa.png" },
-      { label: "غ", value: "ghayn", img: "/assets/images/letters/ghayn.png" },
-      { label: "ع", value: "ayn", img: "/assets/images/letters/ayn.png" },
-      { label: "ه", value: "ha", img: "/assets/images/letters/ha.png" },
-      { label: "خ", value: "kha", img: "/assets/images/letters/kha.png" },
-      { label: "ح", value: "haa", img: "/assets/images/letters/haa.png" },
       { label: "ج", value: "jeem", img: "/assets/images/letters/jeem.png" },
+      { label: "ح", value: "haa", img: "/assets/images/letters/haa.png" },
+      { label: "خ", value: "kha", img: "/assets/images/letters/kha.png" },
+      { label: "ه", value: "ha", img: "/assets/images/letters/ha.png" },
+      { label: "ع", value: "ayn", img: "/assets/images/letters/ayn.png" },
+      { label: "غ", value: "ghayn", img: "/assets/images/letters/ghayn.png" },
+      { label: "ف", value: "fa", img: "/assets/images/letters/fa.png" },
+      { label: "ق", value: "kaf", img: "/assets/images/letters/kaf.png" },
+      { label: "ث", value: "tha", img: "/assets/images/letters/tha.png" },
+      { label: "ص", value: "sad", img: "/assets/images/letters/sad.png" },
+      { label: "ض", value: "dad", img: "/assets/images/letters/dad.png" },
+    ],
+    [
+      { label: "ط", value: "tah", img: "/assets/images/letters/tah.png" },
+      { label: "ك", value: "ka", img: "/assets/images/letters/ka.png" },
+      { label: "م", value: "meem", img: "/assets/images/letters/meem.png" },
+      { label: "ن", value: "non", img: "/assets/images/letters/non.png" },
+      { label: "ت", value: "ta", img: "/assets/images/letters/ta.png" },
+      { label: "ا", value: "alef", img: "/assets/images/letters/alef.png" },
+      { label: "ل", value: "la", img: "/assets/images/letters/la.png" },
+      { label: "ب", value: "ba", img: "/assets/images/letters/ba.png" },
+      { label: "ي", value: "ya", img: "/assets/images/letters/ya.png" },
+      { label: "س", value: "sen", img: "/assets/images/letters/sen.png" },
     ],
     [
       { label: "ش", value: "shin", img: "/assets/images/letters/shin.png" },
-      { label: "س", value: "sen", img: "/assets/images/letters/sen.png" },
-      { label: "ي", value: "ya", img: "/assets/images/letters/ya.png" },
-      { label: "ب", value: "ba", img: "/assets/images/letters/ba.png" },
-      { label: "لا", value: "laa", img: "/assets/images/letters/laa.png" },
-      { label: "ل", value: "la", img: "/assets/images/letters/la.png" },
-      { label: "ا", value: "alef", img: "/assets/images/letters/alef.png" },
-      { label: "ت", value: "ta", img: "/assets/images/letters/ta.png" },
-      { label: "ن", value: "non", img: "/assets/images/letters/non.png" },
-      { label: "م", value: "meem", img: "/assets/images/letters/meem.png" },
-    ],
-    [
-      { label: "ك", value: "ka", img: "/assets/images/letters/ka.png" },
-      { label: "ظ", value: "thah", img: "/assets/images/letters/thah.png" },
-      { label: "ط", value: "tah", img: "/assets/images/letters/tah.png" },
-      { label: "ذ", value: "zal", img: "/assets/images/letters/zal.png" },
       { label: "د", value: "dal", img: "/assets/images/letters/dal.png" },
-      { label: "ز", value: "za", img: "/assets/images/letters/za.png" },
-      { label: "ر", value: "ra", img: "/assets/images/letters/ra.png" },
+      { label: "ظ", value: "thah", img: "/assets/images/letters/thah.png" },
       { label: "و", value: "wa", img: "/assets/images/letters/wa.png" },
+      { label: "ز", value: "za", img: "/assets/images/letters/za.png" },
       { label: "ة", value: "teh", img: "/assets/images/letters/teh.png" },
+      { label: "ى", value: "yaa", img: "/assets/images/letters/yaa.png" },
+      { label: "ر", value: "ra", img: "/assets/images/letters/ra.png" },
+      {
+        label: "ؤ",
+        value: "waHamzeh",
+        img: "/assets/images/letters/waHamzeh.png",
+      },
     ],
+
     [
+      { label: "ء", value: "hamzeh", img: "/assets/images/letters/hamzeh.png" },
+      { label: "ذ", value: "zal", img: "/assets/images/letters/zal.png" },
+      { label: "لا", value: "laa", img: "/assets/images/letters/laa.png" },
       {
         label: "أ",
         value: "alefHamzeh",
@@ -56,14 +64,7 @@ const Keyboard = ({ enteredKeys, setEnteredKeys }: KeyboardProps) => {
         img: "/assets/images/letters/alefMadeh.png",
       },
       { label: "ال", value: "al", img: "/assets/images/letters/al.png" },
-      { label: "ء", value: "hamzeh", img: "/assets/images/letters/hamzeh.png" },
-      {
-        label: "ؤ",
-        value: "waHamzeh",
-        img: "/assets/images/letters/waHamzeh.png",
-      },
       { label: "ي", value: "ya", img: "/assets/images/letters/ya.png" },
-      { label: "ى", value: "yaa", img: "/assets/images/letters/yaa.png" },
       {
         label: "ئ",
         value: "yaaHamzeh",
@@ -115,11 +116,19 @@ const Keyboard = ({ enteredKeys, setEnteredKeys }: KeyboardProps) => {
             <BackwardIcon className="h-4  w-4 fill-secondary md:h-6 md:w-6 lg:h-7 lg:w-7" />
           </button>
           <button
-            className="mr-2 grow rounded-lg border border-primary bg-gray-200 text-center text-xl shadow hover:bg-gray-300"
+            className="relative mr-2 grow rounded-lg border border-primary bg-gray-200 text-center text-xl shadow hover:bg-gray-300"
             onClick={() =>
-              handleKeyPress({ label: " ", value: "space", img: "" })
+              handleKeyPress({
+                label: " ",
+                value: "space",
+                img: "assets/images/letters/space.png",
+              })
             }
-          />
+          >
+            <span className="absolute -left-2 -top-3 h-9 w-9">
+              <img src={"/assets/images/letters/space.png"} alt={"space"} />
+            </span>
+          </button>
 
           <button
             className="mr-2 aspect-square rounded-lg border border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300"
