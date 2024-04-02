@@ -9,10 +9,7 @@ const ReEnterNationalNumberPage = () => {
   return (
     <div className=" flex  items-center justify-center">
       <div className="md:w-1/2 lg:w-1/3 ">
-        {
-          //TODO change video to re enter national number
-        }
-        <Video src="0" onNext={handleNext} validation="unSet" />
+        <Video src="50" onNext={handleNext} validation="unSet" />
       </div>
     </div>
   );
