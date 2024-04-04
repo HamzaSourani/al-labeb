@@ -116,9 +116,10 @@ const Keyboard = ({ enteredKeys, setEnteredKeys }: KeyboardProps) => {
             ) : (
               <button
                 className={classNames(
-                  "relative aspect-square  rounded-lg border  border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300",
+                  "relative   rounded-lg border  border-primary bg-gray-200 px-4 text-center text-xl shadow hover:bg-gray-300",
                   {
                     " col-span-5 aspect-auto": key.span,
+                    " aspect-square": !key.span,
                   },
                 )}
                 onClick={() => handleKeyPress(key)}
