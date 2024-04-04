@@ -18,14 +18,16 @@ const NationalNumberMainPage = () => {
     const res = await checkNationalNumber({
       national_id: enteredKeys.map((key) => key.value).join(""),
     });
+
+    navigate("/al-labeb/services");
     if (res?.data && res.data.status) {
       handleAddDepositOrWithdrawalInfo({
         key: "client",
-        value: enteredKeys,
+        value: enteredKeys.map((key) => key.value).join(""),
       });
       handleAddInfo({
         key: "national_id",
-        value: enteredKeys,
+        value: enteredKeys.map((key) => key.value).join(""),
       });
       navigate("/al-labeb/services");
     } else {
