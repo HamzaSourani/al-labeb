@@ -99,7 +99,7 @@ const Keyboard = ({ enteredKeys, setEnteredKeys }: KeyboardProps) => {
   return (
     <div className="flex flex-col items-center gap-y-4">
       <div className="flex gap-x-4">
-        <output className="min-h-12 w-96 rounded-lg border border-secondary  px-4 py-2 text-lg font-semibold shadow-sm">
+        <output className="min-h-12 w-96  rounded-lg border border-secondary  px-4 py-2 text-lg font-semibold shadow-sm">
           {enteredKeys.map((key) => key.label)}
         </output>
       </div>

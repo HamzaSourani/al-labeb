@@ -22,7 +22,7 @@ const IBANPage = () => {
     if (res?.data && res.data.status) {
       handleAddDepositOrWithdrawalInfo({
         key: "account_id",
-        value: enteredKeys,
+        value: enteredKeys.map((key) => key.value).join(""),
       });
       switch (depositOrWithdrawalInfo.service_name) {
         case "إيداع":

@@ -18,14 +18,14 @@ const WithdrawalAmountPage = () => {
 
   const handleSubmit = async () => {
     const res = await checkMonyAvailability({
-      national_id: depositOrWithdrawalInfo.national_id,
+      national_id: depositOrWithdrawalInfo.client,
       account_id: depositOrWithdrawalInfo.account_id,
       amount: enteredKeys.map((key) => key.value).join(""),
     });
     if (res && res?.status) {
       handleAddDepositOrWithdrawalInfo({
         key: "amount",
-        value: enteredKeys,
+        value: enteredKeys.map((key) => key.value).join(""),
       });
       navigate("/al-labeb/withdrawal/cause");
     } else {

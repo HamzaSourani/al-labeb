@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import checkNationalNumber from "@/api/nationalNumber";
 import NumericKeyboard from "@/components/ui/NumericKeyboard";
@@ -19,18 +19,18 @@ const NationalNumberMainPage = () => {
       national_id: enteredKeys.map((key) => key.value).join(""),
     });
 
-    navigate("/al-labeb/services");
     if (res?.data && res.data.status) {
       handleAddDepositOrWithdrawalInfo({
         key: "client",
         value: enteredKeys.map((key) => key.value).join(""),
       });
+
+      navigate("/al-labeb/services");
+    } else {
       handleAddInfo({
         key: "national_id",
         value: enteredKeys.map((key) => key.value).join(""),
       });
-      navigate("/al-labeb/services");
-    } else {
       navigate("/al-labeb/national-number/un-exist");
     }
   };

@@ -2,10 +2,12 @@ import { useNavigate } from "react-router-dom";
 import Video from "@/components/ui/video";
 import NoIcon from "@/components/svg/no";
 import YesIcon from "@/components/svg/yes";
+import { useUserInfoContext } from "@/hooks/usUserInfo";
 
 const ExistAccountPage = () => {
   const navigate = useNavigate();
-
+  const { userInfo } = useUserInfoContext();
+  console.log(userInfo);
   const handlePositiveCase = () => {
     navigate("/al-labeb/open-account");
   };
