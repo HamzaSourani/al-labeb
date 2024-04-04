@@ -20,7 +20,7 @@ const HasHousePage = () => {
       key: "housing",
       value: false,
     });
-    navigate("/al-labeb/open-account/address");
+    navigate("/al-labeb/open-account/user-address");
   };
   return (
     <div className="flex  flex-col items-center  justify-center gap-y-4">
