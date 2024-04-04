@@ -5,33 +5,27 @@ import NextIcon from "@/components/svg/next";
 
 const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [status, setStatus] = useState(true);
 
   const videoRef = useRef<HTMLVideoElement>(null!);
 
   const navigate = useNavigate();
-  console.log(videoSources);
-  const handlePlayPause = () => {
-    if (status) {
-      videoRef.current.pause();
-      setStatus(false);
-    } else {
-      videoRef.current.play();
-      setStatus(true);
-    }
-  };
+
   const handleNext = () => {
     navigate(nextUrl!);
   };
 
-  const playNextVideo = useCallback(() => {
-    if (currentVideoIndex === videoSources.length - 1) {
-      videoRef.current.pause();
-      setStatus(false);
-      setCurrentVideoIndex(0);
-    }
-    setCurrentVideoIndex((prevIndex) => prevIndex + 1);
-  }, [videoSources, currentVideoIndex]);
+  const playNextVideo = useCallback(
+    () => {
+      // if (currentVideoIndex === videoSources.length - 1) {
+      //   videoRef.current.pause();
+      //   setCurrentVideoIndex(0);
+      // }
+      setCurrentVideoIndex((prevIndex) => prevIndex + 1);
+    },
+    [
+      // videoSources, currentVideoIndex
+    ],
+  );
 
   useEffect(() => {
     currentVideoIndex !== videoSources.length - 1 &&
@@ -49,6 +43,7 @@ const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
   return (
     <div className="flex h-full w-full flex-col gap-4  overflow-hidden rounded-lg shadow-sm shadow-gray-300">
       <video
+        key={currentVideoIndex}
         id="video-player"
         ref={videoRef}
         className="aspect-square"
@@ -63,7 +58,7 @@ const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
             className="flex flex-col items-center justify-center transition-transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"
             onClick={handleNext}
           >
-            <NextIcon className="fill-primary  h-6 w-6 md:h-8 md:w-8 lg:h-10 lg:w-10" />
+            <NextIcon className="h-6  w-6 fill-primary md:h-8 md:w-8 lg:h-10 lg:w-10" />
           </button>
         </div>
       )}

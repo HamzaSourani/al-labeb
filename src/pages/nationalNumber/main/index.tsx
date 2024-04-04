@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import checkNationalNumber from "@/api/nationalNumber";
 import NumericKeyboard from "@/components/ui/NumericKeyboard";
