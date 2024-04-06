@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import Video from "@/components/ui/video";
-import NoIcon from "@/components/svg/no";
-import YesIcon from "@/components/svg/yes";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 
 const ExistAccountPage = () => {
@@ -25,13 +23,21 @@ const ExistAccountPage = () => {
           onClick={handlePositiveCase}
           className="mr-2 rounded-lg  border border-primary bg-gray-200 p-2 px-4 text-center text-xl shadow  hover:bg-gray-300"
         >
-          <YesIcon className="h-6 w-6 fill-primary md:h-8 md:w-8 lg:h-10 lg:w-10" />
+          <img
+            className="h-6 w-6 fill-primary md:h-8 md:w-8 lg:h-10 lg:w-10"
+            src="/assets/images/yes.png"
+            alt="yes"
+          />
         </button>
         <button
           onClick={handleNegativeCase}
           className="mr-2 rounded-lg  border border-primary bg-gray-200 p-2 px-4 text-center text-xl shadow  hover:bg-gray-300"
         >
-          <NoIcon className="h-6 w-6 fill-primary md:h-8 md:w-8 lg:h-10 lg:w-10" />
+          <img
+            className="h-6 w-6 fill-primary md:h-8 md:w-8 lg:h-10 lg:w-10"
+            src="/assets/images/no.png"
+            alt="no"
+          />
         </button>
       </div>
     </div>
