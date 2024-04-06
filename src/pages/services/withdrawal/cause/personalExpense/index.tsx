@@ -13,7 +13,7 @@ const PersonalExpensePage = () => {
   const navigate = useNavigate();
   const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
   const EXPENSES = [
-    { src: "28.1", label: "مواد غزائية" },
+    { src: "28.1", label: "مواد غذائية" },
     { src: "28.2", label: "خدمات اتصالات" },
     { src: "28.3", label: "مواد بلاستيكية" },
     { src: "28.4", label: "البسة" },
@@ -26,7 +26,7 @@ const PersonalExpensePage = () => {
       case "28.1":
         handleAddDepositOrWithdrawalInfo({
           key: "cause",
-          value: "مصاريف شخصية، مواد غزائية",
+          value: "مصاريف شخصية، مواد غذائية",
         });
 
         break;

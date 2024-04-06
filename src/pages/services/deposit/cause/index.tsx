@@ -16,11 +16,11 @@ const DepositCausePage = () => {
 
   const CAUSES = [
     { src: "26.1", label: "ادخار" },
-    { src: "26.2", label: "تغزية حساب" },
+    { src: "26.2", label: "تغذية حساب" },
     { src: "26.3", label: "سداد التزام" },
-    { src: "26.4", label: "قسط" },
-    { src: "26.5", label: "عمولات" },
-    { src: "26.5", label: "قيمة فاتورة" },
+    { src: "26.4", label: "تحويل وحدات" },
+    { src: "26.5", label: "قسط" },
+    { src: "26.6", label: "قيمة فاتورة" },
   ];
 
   const handleNext = () => {
@@ -35,7 +35,7 @@ const DepositCausePage = () => {
       case "26.2":
         handleAddDepositOrWithdrawalInfo({
           key: "cause",
-          value: "تغزية حساب",
+          value: "تغذية حساب",
         });
         break;
       case "26.3":
@@ -48,13 +48,13 @@ const DepositCausePage = () => {
       case "26.4":
         handleAddDepositOrWithdrawalInfo({
           key: "cause",
-          value: "قسط",
+          value: "تحويل وحدات",
         });
         break;
       case "26.5":
         handleAddDepositOrWithdrawalInfo({
           key: "cause",
-          value: "عمولات",
+          value: "قسط",
         });
 
         break;

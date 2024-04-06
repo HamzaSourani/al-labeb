@@ -13,7 +13,7 @@ const FinancialBusinessIncomePage = () => {
   const navigate = useNavigate();
   const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
   const FINANCIAL_BUSINESS_INCOMES = [
-    { src: "28.1", label: "مواد غزائية" },
+    { src: "28.1", label: "مواد غذائية" },
     { src: "28.2", label: "خدمات اتصالات" },
     { src: "28.3", label: "مواد بلاستيكية" },
     { src: "28.4", label: "البسة" },
@@ -26,7 +26,7 @@ const FinancialBusinessIncomePage = () => {
       case "28.1":
         handleAddDepositOrWithdrawalInfo({
           key: "source",
-          value: "عائدات عمل تجاري، مواد غزائية",
+          value: "عائدات عمل تجاري، مواد غذائية",
         });
         break;
       case "28.2":

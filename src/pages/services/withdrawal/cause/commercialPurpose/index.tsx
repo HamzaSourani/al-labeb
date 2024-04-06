@@ -13,7 +13,7 @@ const CommercialPurposePage = () => {
   const navigate = useNavigate();
   const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
   const PURPOSES = [
-    { src: "28.1", label: "مواد غزائية" },
+    { src: "28.1", label: "مواد غذائية" },
     { src: "28.2", label: "خدمات اتصالات" },
     { src: "28.3", label: "مواد بلاستيكية" },
     { src: "28.4", label: "البسة" },
@@ -26,7 +26,7 @@ const CommercialPurposePage = () => {
       case "28.1":
         handleAddDepositOrWithdrawalInfo({
           key: "cause",
-          value: "اغراض تجارية، مواد غزائية",
+          value: "اغراض تجارية، مواد غذائية",
         });
 
         break;
@@ -84,7 +84,7 @@ const CommercialPurposePage = () => {
               onClick={() => setSelectedPurpose(purpose)}
             >
               <video
-                src={`/assets/videos/${purpose}.mp4`}
+                src={`/assets/videos/${purpose.src}.mp4`}
                 className="aspect-square w-52 "
               />
             </div>

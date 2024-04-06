@@ -14,7 +14,7 @@ const ServicesPage = () => {
   const isValid = useValidation(selectedService.src !== "2");
 
   const SERVICES = [
-    { src: "4", label: "خدمة الإداع" },
+    { src: "4", label: "خدمة الإيداع" },
     { src: "40", label: "خدمة السحب" },
   ];
   const handleNext = () => {
