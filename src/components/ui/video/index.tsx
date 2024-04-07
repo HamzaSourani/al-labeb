@@ -6,7 +6,7 @@ import PlayIcon from "@/components/svg/play";
 import RefreshIcon from "@/components/svg/refresh";
 import VideoProps from "./type";
 
-const Video = ({ src, disableNextButton, validation, onNext }: VideoProps) => {
+const Video = ({ src, validation, onNext }: VideoProps) => {
   const [status, setStatus] = useState(true);
   const [goNext, setGoNext] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null!);
@@ -50,7 +50,7 @@ const Video = ({ src, disableNextButton, validation, onNext }: VideoProps) => {
           <button
             className=" flex flex-col items-center justify-center transition-transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"
             onClick={onNext}
-            disabled={disableNextButton}
+            disabled={validation === "unValid"}
           >
             <NextIcon
               className={classNames(

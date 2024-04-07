@@ -19,18 +19,17 @@ const NationalNumberMainPage = () => {
       national_id: enteredKeys.map((key) => key.value).join(""),
     });
 
+    handleAddDepositOrWithdrawalInfo({
+      key: "client",
+      value: enteredKeys.map((key) => key.value).join(""),
+    });
+    handleAddInfo({
+      key: "national_id",
+      value: enteredKeys.map((key) => key.value).join(""),
+    });
     if (res?.data && res.data.status) {
-      handleAddDepositOrWithdrawalInfo({
-        key: "client",
-        value: enteredKeys.map((key) => key.value).join(""),
-      });
-
       navigate("/al-labeb/services");
     } else {
-      handleAddInfo({
-        key: "national_id",
-        value: enteredKeys.map((key) => key.value).join(""),
-      });
       navigate("/al-labeb/national-number/un-exist");
     }
   };

@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Video from "@/components/ui/video";
+import { getCountOfTermsAndConditionVideos } from "@/api/openAccount";
 
 const TermsAndConditionMainPage = () => {
   const [index, setIndex] = useState(0);
-
+  const [videoSources, setVideoSources] = useState<string[]>([]);
   const navigate = useNavigate();
-  const videoSources = ["100", "101", "102", "103"];
 
   const handleNext = async () => {
     if (index !== videoSources.length - 1) {
@@ -20,6 +20,17 @@ const TermsAndConditionMainPage = () => {
   const handleGoToEndPage = () => {
     navigate("/al-labeb/end");
   };
+  useEffect(() => {
+    (async () => {
+      const data = await getCountOfTermsAndConditionVideos();
+      if (data && data.count) {
+        setVideoSources(
+          Array.from({ length: data.count }, (_, index) => String(100 + index)),
+        );
+      }
+    })();
+  }, []);
+  console.log(videoSources);
   return (
     <>
       {index === videoSources.length - 1 ? (

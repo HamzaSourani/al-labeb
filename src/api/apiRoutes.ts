@@ -1,8 +1,10 @@
 const API_ROUTES = {
-  CHECK_USER_EXISTING: "api/check_client_existing",
-  OPEN_ACCOUNT: "/api/open_account",
-  DEPOSIT: "/api/deposit",
-  WITHDRAWAL: "/api/withdrawal",
-  CHECK_MONY_AVAILABILITY: "/api/withdrawal_availability",
+  CHECK_USER_EXISTING: "/check_client_existing",
+  OPEN_ACCOUNT: "/open_account",
+  GET_COUNT_OF_TERMS_AND_CONDITIONS_VIDEOS:
+    "/count_videos_terms_and_conditions",
+  DEPOSIT: "/deposit",
+  WITHDRAWAL: "/withdrawal",
+  CHECK_MONY_AVAILABILITY: "/withdrawal_availability",
 };
 export default API_ROUTES;

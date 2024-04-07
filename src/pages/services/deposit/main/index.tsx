@@ -1,10 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import Video from "@/components/ui/video";
+import { useUserInfoContext } from "@/hooks/usUserInfo";
 
 const DepositMainPage = () => {
   const navigate = useNavigate();
+  const { isNewUser, handleChangeUserStatus } = useUserInfoContext();
   const handleNext = () => {
-    navigate("/al-labeb/services/IBAN");
+    if (isNewUser) {
+      handleChangeUserStatus({ isNewUser: false });
+      navigate("/al-labeb/deposit/source");
+    } else {
+      navigate("/al-labeb/services/IBAN");
+    }
   };
   return (
     <div className=" flex  items-center justify-center">

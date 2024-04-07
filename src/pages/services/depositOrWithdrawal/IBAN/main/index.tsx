@@ -9,8 +9,11 @@ import { Key } from "@/components/ui/NumericKeyboard/type";
 
 const IBANPage = () => {
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
-  const { depositOrWithdrawalInfo, handleAddDepositOrWithdrawalInfo } =
-    useUserInfoContext();
+  const {
+    depositOrWithdrawalInfo,
+    userInfo,
+    handleAddDepositOrWithdrawalInfo,
+  } = useUserInfoContext();
   const isValid = useValidation(enteredKeys.length === 9);
 
   const navigate = useNavigate();
@@ -18,6 +21,7 @@ const IBANPage = () => {
     const res = await checkNationalNumber({
       national_id: depositOrWithdrawalInfo.client,
       account_id: enteredKeys.map((key) => key.value).join(""),
+      client_name: userInfo.client_name,
     });
     if (res?.data && res.data.status) {
       handleAddDepositOrWithdrawalInfo({

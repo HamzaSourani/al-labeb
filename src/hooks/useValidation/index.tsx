@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-
+export type Validation = "valid" | "unValid";
 const useValidation = (condition: boolean) => {
-  const [isValid, setIsValid] = useState<"valid" | "unValid">("unValid");
+  const [isValid, setIsValid] = useState<Validation>("unValid");
   useEffect(() => {
     if (condition) {
       setIsValid("valid");

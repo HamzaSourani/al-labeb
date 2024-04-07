@@ -4,4 +4,5 @@ export interface ReturnValue {
 export interface CheckNationalNumberParams {
   national_id: string;
   account_id?: string;
+  client_name?: string;
 }

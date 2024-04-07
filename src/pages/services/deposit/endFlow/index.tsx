@@ -5,13 +5,16 @@ import Video from "@/components/ui/video";
 import deposit from "@/api/deposit";
 const EndDepositFlowPage = () => {
   const [index, setIndex] = useState(0);
+  const [isValid, setIsValid] = useState<"valid" | "unValid" | "unSet">(
+    "unSet",
+  );
   const navigate = useNavigate();
   const { depositOrWithdrawalInfo } = useUserInfoContext();
   const videoSources = ["21", "22"];
   const handleNext = async () => {
     if (index === videoSources.length - 1) {
+      setIsValid("unValid");
       await deposit(depositOrWithdrawalInfo);
-
       navigate("/al-labeb/end");
     } else {
       setIndex((pre) => pre + 1);
@@ -24,7 +27,7 @@ const EndDepositFlowPage = () => {
         <Video
           src={videoSources[index]}
           onNext={handleNext}
-          validation={"unSet"}
+          validation={isValid}
           previousUrl="/"
         />
       </div>

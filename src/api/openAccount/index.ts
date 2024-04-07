@@ -8,4 +8,12 @@ const openAccount = async (userInfo: UserInfo) => {
     return data;
   } catch (error) {}
 };
-export default openAccount;
+const getCountOfTermsAndConditionVideos = async () => {
+  try {
+    const { data } = await API_INSTANCE.get(
+      API_ROUTES.GET_COUNT_OF_TERMS_AND_CONDITIONS_VIDEOS,
+    );
+    return data;
+  } catch (error) {}
+};
+export { getCountOfTermsAndConditionVideos, openAccount };

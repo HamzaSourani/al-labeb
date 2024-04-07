@@ -9,7 +9,7 @@ function App() {
   return (
     <div
       ref={containerRef}
-      onClick={() => containerRef.current.requestFullscreen()}
+      // onClick={() => containerRef.current.requestFullscreen()}
       className=" h-screen "
     >
       <img
