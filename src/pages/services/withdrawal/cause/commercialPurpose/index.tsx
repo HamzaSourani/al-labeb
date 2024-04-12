@@ -1,9 +1,9 @@
-import Video from "@/components/ui/video";
-import { useUserInfoContext } from "@/hooks/usUserInfo";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import classNames from "classnames";
+import { useUserInfoContext } from "@/hooks/usUserInfo";
 import useValidation from "@/hooks/useValidation";
+import VideoWithOptions from "@/components/pages/videoWithOptions";
+import pagesRoutes from "@/constants/pagesRoutes";
 
 const CommercialPurposePage = () => {
   const [selectedPurpose, setSelectedPurpose] = useState({
@@ -18,10 +18,11 @@ const CommercialPurposePage = () => {
     { src: "28.3", label: "مواد بلاستيكية" },
     { src: "28.4", label: "البسة" },
     { src: "28.5", label: "أخرى" },
-  ] as const;
-  const isValid = useValidation(selectedPurpose.src !== "29");
+  ];
+  const [isValid, setIsValid] = useValidation(selectedPurpose.src !== "29");
 
   const handleNext = () => {
+    setIsValid("unValid");
     switch (selectedPurpose.src) {
       case "28.1":
         handleAddDepositOrWithdrawalInfo({
@@ -57,41 +58,16 @@ const CommercialPurposePage = () => {
 
         break;
     }
-    navigate("/al-labeb/withdrawal/end");
+    navigate(pagesRoutes.withdrawal.end);
   };
   return (
-    <div>
-      <div className="flex justify-center gap-4">
-        <div className="  md:w-1/2 lg:w-1/3 ">
-          <Video
-            src={selectedPurpose.src}
-            onNext={handleNext}
-            validation={isValid}
-            disableNextButton={isValid === "unValid"}
-          />
-        </div>
-        <div className="flex max-h-[calc(100vh_-_120px)] snap-y snap-mandatory  flex-col gap-y-4 self-start overflow-auto ">
-          {PURPOSES.map((purpose) => (
-            <div
-              key={purpose.src}
-              className={classNames(
-                "snap-start border shadow transition-all hover:cursor-pointer",
-                {
-                  "border-primary ": purpose.src === selectedPurpose.src,
-                  "border-secondary ": purpose.src !== selectedPurpose.src,
-                },
-              )}
-              onClick={() => setSelectedPurpose(purpose)}
-            >
-              <video
-                src={`/assets/videos/${purpose.src}.mp4`}
-                className="aspect-square w-52 "
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <VideoWithOptions
+      selectedOption={selectedPurpose}
+      validation={isValid}
+      options={PURPOSES}
+      setSelectedOption={setSelectedPurpose}
+      handleNext={handleNext}
+    />
   );
 };
 

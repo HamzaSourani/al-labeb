@@ -5,16 +5,19 @@ import Video from "@/components/ui/video";
 import VideoPlaylist from "@/components/ui/videoPlayList";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import useValidation from "@/hooks/useValidation";
+import VideoWithKeyboard from "@/components/pages/videoWithKeyboard";
+import pagesRoutes from "@/constants/pagesRoutes";
 
 const UserNamePage = () => {
   const [readEnteredCharacters, setReadEnteredCharacters] = useState(false);
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const { handleAddInfo } = useUserInfoContext();
-  const isValid = useValidation(
+  const [isValid, setIsValid] = useValidation(
     enteredKeys.length > 3 && enteredKeys.length < 50,
   );
 
   const handleSubmit = () => {
+    setIsValid("unValid");
     setReadEnteredCharacters(true);
     handleAddInfo({
       key: "client_name",
@@ -27,22 +30,17 @@ const UserNamePage = () => {
         <div className="basis-1/3">
           <VideoPlaylist
             videoSources={enteredKeys.map((key) => key.value)}
-            nextUrl="/al-labeb/user-phone"
+            nextUrl={pagesRoutes.userName}
           />
         </div>
       ) : (
-        <>
-          <div className="basis-1/3">
-            <Video
-              src="47"
-              onNext={handleSubmit}
-              previousUrl="/"
-              validation={isValid}
-              disableNextButton={isValid === "unValid"}
-            />
-          </div>
-          <Keyboard enteredKeys={enteredKeys} setEnteredKeys={setEnteredKeys} />
-        </>
+        <VideoWithKeyboard
+          enteredKeys={enteredKeys}
+          validation={isValid}
+          videoNumber="47"
+          setEnteredKeys={setEnteredKeys}
+          handleNext={handleSubmit}
+        />
       )}
     </div>
   );

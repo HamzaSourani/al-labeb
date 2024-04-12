@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import checkNationalNumber from "@/api/nationalNumber";
-import NumericKeyboard from "@/components/ui/NumericKeyboard";
-import Video from "@/components/ui/video";
 import useValidation from "@/hooks/useValidation";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import { Key } from "@/components/ui/NumericKeyboard/type";
+import VideoWithNumericKeyboard from "@/components/pages/videoWithNumericKeyboard";
+import pagesRoutes from "@/constants/pagesRoutes";
 
 const NationalNumberMainPage = () => {
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const navigate = useNavigate();
   const { handleAddInfo, handleAddDepositOrWithdrawalInfo } =
     useUserInfoContext();
-  const isValid = useValidation(enteredKeys.length === 11);
+  const [isValid, setIsValid] = useValidation(enteredKeys.length === 11);
 
   const handleSubmit = async () => {
+    setIsValid("unValid");
     const res = await checkNationalNumber({
       national_id: enteredKeys.map((key) => key.value).join(""),
     });
@@ -28,26 +29,19 @@ const NationalNumberMainPage = () => {
       value: enteredKeys.map((key) => key.value).join(""),
     });
     if (res?.data && res.data.status) {
-      navigate("/al-labeb/services");
+      navigate(pagesRoutes.services.main);
     } else {
-      navigate("/al-labeb/national-number/un-exist");
     }
+    navigate(pagesRoutes.nationalNumber.unExist);
   };
   return (
-    <div className="flex  flex-col  items-center justify-around  md:flex-row">
-      <div className="basis-1/3">
-        <Video
-          src="32"
-          onNext={handleSubmit}
-          validation={isValid}
-          disableNextButton={isValid === "unValid"}
-        />
-      </div>
-      <NumericKeyboard
-        enteredKeys={enteredKeys}
-        setEnteredKeys={setEnteredKeys}
-      />
-    </div>
+    <VideoWithNumericKeyboard
+      enteredKeys={enteredKeys}
+      validation={isValid}
+      videoNumber="32"
+      setEnteredKeys={setEnteredKeys}
+      handleNext={handleSubmit}
+    />
   );
 };
 

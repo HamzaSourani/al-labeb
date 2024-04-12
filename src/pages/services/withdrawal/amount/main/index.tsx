@@ -6,42 +6,38 @@ import { useUserInfoContext } from "@/hooks/usUserInfo";
 import { checkMonyAvailability } from "@/api/withdrawal";
 import useValidation from "@/hooks/useValidation";
 import { Key } from "@/components/ui/NumericKeyboard/type";
+import pagesRoutes from "@/constants/pagesRoutes";
 
 const WithdrawalAmountPage = () => {
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const { depositOrWithdrawalInfo, handleAddDepositOrWithdrawalInfo } =
     useUserInfoContext();
   const navigate = useNavigate();
-  const isValid = useValidation(
-    Number(enteredKeys.map((key) => key.value).join("")) > 0,
-  );
+  const enteredKeysString = enteredKeys.map((key) => key.value).join("");
+  const [isValid, setIsValid] = useValidation(Number(enteredKeysString) > 0);
 
   const handleSubmit = async () => {
+    setIsValid("unValid");
     const res = await checkMonyAvailability({
       national_id: depositOrWithdrawalInfo.client,
       account_id: depositOrWithdrawalInfo.account_id,
-      amount: enteredKeys.map((key) => key.value).join(""),
+      amount: enteredKeysString,
     });
     if (res && res?.status) {
       handleAddDepositOrWithdrawalInfo({
         key: "amount",
-        value: enteredKeys.map((key) => key.value).join(""),
+        value: enteredKeysString,
       });
-      navigate("/al-labeb/withdrawal/cause");
+      navigate(pagesRoutes.withdrawal.cause.main);
     } else {
-      navigate("exceed-amount");
+      navigate(pagesRoutes.withdrawal.amount.exceedAmount);
     }
   };
 
   return (
     <div className="flex  flex-col  items-center justify-around  md:flex-row">
       <div className="basis-1/3">
-        <Video
-          src="40.2"
-          onNext={handleSubmit}
-          validation={isValid}
-          disableNextButton={isValid === "unValid"}
-        />
+        <Video src="40.2" onNext={handleSubmit} validation={isValid} />
       </div>
       <NumericKeyboard
         enteredKeys={enteredKeys}

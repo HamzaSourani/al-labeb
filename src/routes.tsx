@@ -24,17 +24,9 @@ const SavingAccountExplanation = lazy(
   () => import("@/pages/services/openAccount/savingAccount/explanation"),
 );
 const TermsAndConditionMainPage = lazy(
-  () => import("@/pages/services/openAccount/termsAndConditions/main"),
+  () => import("@/pages/services/openAccount/termsAndConditions"),
 );
-const RefuseTermsAndConditionsPage = lazy(
-  () => import("@/pages/services/openAccount/termsAndConditions/refuse"),
-);
-const NationalNumberMainPage = lazy(
-  () => import("@/pages/services/openAccount/nationalNumber/main"),
-);
-const ExistAccountPage = lazy(
-  () => import("@/pages/services/openAccount/nationalNumber/existAccount"),
-);
+
 const MotherFirstName = lazy(
   () => import("@/pages/services/openAccount/motherFirstName"),
 );
@@ -148,15 +140,7 @@ const Routes = () => {
             path="open-account/terms-and-conditions"
             element={<TermsAndConditionMainPage />}
           />
-          <Route
-            path="open-account/terms-and-conditions/refuse"
-            element={<RefuseTermsAndConditionsPage />}
-          />
 
-          <Route
-            path="open-account/exist-account"
-            element={<ExistAccountPage />}
-          />
           <Route
             path="open-account/mother-first-name"
             element={<MotherFirstName />}
@@ -240,7 +224,7 @@ const Routes = () => {
           />
           <Route path="withdrawal/amount" element={<WithdrawalAmountPage />} />
           <Route
-            path="withdrawal/amount/exceed-amount"
+            path="withdrawal/amount/exceed"
             element={<ExceedAmountPage />}
           />
           <Route path="withdrawal/end" element={<EndWithdrawalFlowPage />} />

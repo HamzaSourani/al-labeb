@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NumericKeyboard from "@/components/ui/NumericKeyboard";
-import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import checkNationalNumber from "@/api/nationalNumber";
 import useValidation from "@/hooks/useValidation";
 import { Key } from "@/components/ui/NumericKeyboard/type";
+import pagesRoutes from "@/constants/pagesRoutes";
+import VideoWithNumericKeyboard from "@/components/pages/videoWithNumericKeyboard";
 
 const IBANPage = () => {
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
@@ -14,10 +14,11 @@ const IBANPage = () => {
     userInfo,
     handleAddDepositOrWithdrawalInfo,
   } = useUserInfoContext();
-  const isValid = useValidation(enteredKeys.length === 9);
+  const [isValid, setIsValid] = useValidation(enteredKeys.length === 9);
 
   const navigate = useNavigate();
   const handleSubmit = async () => {
+    setIsValid("unValid");
     const res = await checkNationalNumber({
       national_id: depositOrWithdrawalInfo.client,
       account_id: enteredKeys.map((key) => key.value).join(""),
@@ -30,35 +31,28 @@ const IBANPage = () => {
       });
       switch (depositOrWithdrawalInfo.service_name) {
         case "إيداع":
-          navigate("/al-labeb/deposit/source");
+          navigate(pagesRoutes.deposit.source.main);
           break;
         case "سحب":
-          navigate("/al-labeb/withdrawal/amount");
+          navigate(pagesRoutes.withdrawal.amount.main);
           break;
         default:
-          navigate("/al-labeb/services");
+          navigate(pagesRoutes.services.main);
           break;
       }
     } else {
-      navigate("/al-labeb/services/IBAN/re-enter-national-number");
+      navigate(pagesRoutes.services.IBAN.reEnterNationalNumber);
     }
   };
 
   return (
-    <div className="flex  flex-col  items-center justify-around  md:flex-row">
-      <div className="basis-1/3">
-        <Video
-          src="4.1"
-          onNext={handleSubmit}
-          validation={isValid}
-          disableNextButton={isValid === "unValid"}
-        />
-      </div>
-      <NumericKeyboard
-        enteredKeys={enteredKeys}
-        setEnteredKeys={setEnteredKeys}
-      />
-    </div>
+    <VideoWithNumericKeyboard
+      enteredKeys={enteredKeys}
+      videoNumber="4.1"
+      validation={isValid}
+      setEnteredKeys={setEnteredKeys}
+      handleNext={handleSubmit}
+    />
   );
 };
 

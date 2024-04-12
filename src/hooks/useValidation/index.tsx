@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-export type Validation = "valid" | "unValid";
+export type Validation = "valid" | "unValid" | "unSet";
 const useValidation = (condition: boolean) => {
   const [isValid, setIsValid] = useState<Validation>("unValid");
   useEffect(() => {
@@ -9,7 +9,7 @@ const useValidation = (condition: boolean) => {
       setIsValid("unValid");
     }
   }, [condition]);
-  return isValid;
+  return [isValid, setIsValid] as const;
 };
 
 export default useValidation;

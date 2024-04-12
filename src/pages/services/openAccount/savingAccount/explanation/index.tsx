@@ -1,21 +1,22 @@
-import Video from "@/components/ui/video";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SingleVideo from "@/components/pages/singleVideo";
+import pagesRoutes from "@/constants/pagesRoutes";
 
 const SavingAccountExplanation = () => {
   const [videoSrc, setVideoSrc] = useState("10");
   const navigate = useNavigate();
   const handleNext = () => {
     videoSrc === "15"
-      ? navigate("/al-labeb/open-account/terms-and-conditions")
+      ? navigate(pagesRoutes.openAccount.termsAndConditions)
       : setVideoSrc((pre) => String(Number(pre) + 1));
   };
   return (
-    <div className=" flex  items-center justify-center">
-      <div className="md:w-1/2 lg:w-1/3 ">
-        <Video src={videoSrc} onNext={handleNext} validation="unSet" />
-      </div>
-    </div>
+    <SingleVideo
+      validation="unSet"
+      videoNumber={videoSrc}
+      handleNext={handleNext}
+    />
   );
 };
 

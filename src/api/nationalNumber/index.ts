@@ -1,4 +1,4 @@
-import API_ROUTES from "../apiRoutes";
+import API_ROUTES from "../../constants/apiRoutes";
 import API_INSTANCE from "../instance";
 import { ReturnValue, CheckNationalNumberParams } from "./type";
 

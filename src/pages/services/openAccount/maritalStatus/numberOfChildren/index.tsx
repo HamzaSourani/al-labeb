@@ -1,42 +1,34 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NumericKeyboard from "@/components/ui/NumericKeyboard";
-import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import useValidation from "@/hooks/useValidation";
 import { Key } from "@/components/ui/NumericKeyboard/type";
+import pagesRoutes from "@/constants/pagesRoutes";
+import VideoWithNumericKeyboard from "@/components/pages/videoWithNumericKeyboard";
 
 const NumberOfChildrenPage = () => {
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const { handleAddInfo } = useUserInfoContext();
   const navigate = useNavigate();
-  const isValid = useValidation(
-    Number(enteredKeys.map((key) => key.value).join("")) >= 0,
-  );
-
+  const enteredKeysString = enteredKeys.map((key) => key.value).join("");
+  const [isValid, setIsValid] = useValidation(Number(enteredKeysString) >= 0);
   const handleSubmit = async () => {
+    setIsValid("unValid");
     handleAddInfo({
       key: "num_children",
-      value: enteredKeys.map((key) => key.value).join(""),
+      value: enteredKeysString,
     });
-    navigate("/al-labeb/open-account/has-house");
+    navigate(pagesRoutes.openAccount.hasHouse);
   };
 
   return (
-    <div className="flex  flex-col  items-center justify-around  md:flex-row">
-      <div className="basis-1/3">
-        <Video
-          src="3.5"
-          onNext={handleSubmit}
-          validation={isValid}
-          disableNextButton={isValid === "unValid"}
-        />
-      </div>
-      <NumericKeyboard
-        enteredKeys={enteredKeys}
-        setEnteredKeys={setEnteredKeys}
-      />
-    </div>
+    <VideoWithNumericKeyboard
+      enteredKeys={enteredKeys}
+      validation={isValid}
+      videoNumber="3.5"
+      setEnteredKeys={setEnteredKeys}
+      handleNext={handleSubmit}
+    />
   );
 };
 

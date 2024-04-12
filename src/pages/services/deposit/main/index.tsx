@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
+import SingleVideo from "@/components/pages/singleVideo";
+import pagesRoutes from "@/constants/pagesRoutes";
 
 const DepositMainPage = () => {
   const navigate = useNavigate();
@@ -8,17 +9,13 @@ const DepositMainPage = () => {
   const handleNext = () => {
     if (isNewUser) {
       handleChangeUserStatus({ isNewUser: false });
-      navigate("/al-labeb/deposit/source");
+      navigate(pagesRoutes.deposit.source.main);
     } else {
-      navigate("/al-labeb/services/IBAN");
+      navigate(pagesRoutes.services.IBAN.main);
     }
   };
   return (
-    <div className=" flex  items-center justify-center">
-      <div className="md:w-1/2 lg:w-1/3 ">
-        <Video src="4" onNext={handleNext} validation="unSet" />
-      </div>
-    </div>
+    <SingleVideo videoNumber="4" validation="unSet" handleNext={handleNext} />
   );
 };
 

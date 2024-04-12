@@ -1,46 +1,40 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NumericKeyboard from "@/components/ui/NumericKeyboard";
-import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import useValidation from "@/hooks/useValidation";
 import { Key } from "@/components/ui/NumericKeyboard/type";
+import VideoWithNumericKeyboard from "@/components/pages/videoWithNumericKeyboard";
+import pagesRoutes from "@/constants/pagesRoutes";
 
 const UserPhoneNumberPage = () => {
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const { handleAddInfo, handleAddDepositOrWithdrawalInfo } =
     useUserInfoContext();
-  const isValid = useValidation(enteredKeys.length === 10);
+  const [isValid, setIsValid] = useValidation(enteredKeys.length === 10);
 
   const navigate = useNavigate();
-
-  const handleSubmit = async () => {
+  const enteredKeysString = enteredKeys.map((key) => key.value).join("");
+  const handleSubmit = () => {
+    setIsValid("unValid");
     handleAddInfo({
       key: "phone",
-      value: enteredKeys.map((key) => key.value).join(""),
+      value: enteredKeys,
     });
     handleAddDepositOrWithdrawalInfo({
       key: "phone",
-      value: enteredKeys.map((key) => key.value).join(""),
+      value: enteredKeysString,
     });
-    navigate("/al-labeb/national-number");
+    navigate(pagesRoutes.nationalNumber.main);
   };
 
   return (
-    <div className="flex  flex-col  items-center justify-around  md:flex-row">
-      <div className="basis-1/3">
-        <Video
-          src="4.4"
-          onNext={handleSubmit}
-          validation={isValid}
-          disableNextButton={isValid === "unValid"}
-        />
-      </div>
-      <NumericKeyboard
-        enteredKeys={enteredKeys}
-        setEnteredKeys={setEnteredKeys}
-      />
-    </div>
+    <VideoWithNumericKeyboard
+      enteredKeys={enteredKeys}
+      validation={isValid}
+      videoNumber="4.4"
+      setEnteredKeys={setEnteredKeys}
+      handleNext={handleSubmit}
+    />
   );
 };
 

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUserInfoContext } from "@/hooks/usUserInfo";
-import Video from "@/components/ui/video";
 import deposit from "@/api/deposit";
+import SingleVideo from "@/components/pages/singleVideo";
+import { useUserInfoContext } from "@/hooks/usUserInfo";
+import useValidation from "@/hooks/useValidation";
+import pagesRoutes from "@/constants/pagesRoutes";
 const EndDepositFlowPage = () => {
   const [index, setIndex] = useState(0);
-  const [isValid, setIsValid] = useState<"valid" | "unValid" | "unSet">(
-    "unSet",
-  );
+  const [isValid, setIsValid] = useValidation(true);
   const navigate = useNavigate();
   const { depositOrWithdrawalInfo } = useUserInfoContext();
   const videoSources = ["21", "22"];
@@ -15,23 +15,18 @@ const EndDepositFlowPage = () => {
     if (index === videoSources.length - 1) {
       setIsValid("unValid");
       await deposit(depositOrWithdrawalInfo);
-      navigate("/al-labeb/end");
+      navigate(pagesRoutes.end);
     } else {
       setIndex((pre) => pre + 1);
     }
   };
 
   return (
-    <div className=" flex  items-center justify-center">
-      <div className="md:w-1/2 lg:w-1/3 ">
-        <Video
-          src={videoSources[index]}
-          onNext={handleNext}
-          validation={isValid}
-          previousUrl="/"
-        />
-      </div>
-    </div>
+    <SingleVideo
+      videoNumber={videoSources[index]}
+      validation={isValid}
+      handleNext={handleNext}
+    />
   );
 };
 

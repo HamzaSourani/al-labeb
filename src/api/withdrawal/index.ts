@@ -1,5 +1,5 @@
 import { DepositOrWithDrawalInfoObject } from "@/hooks/usUserInfo/type";
-import API_ROUTES from "../apiRoutes";
+import API_ROUTES from "../../constants/apiRoutes";
 import API_INSTANCE from "../instance";
 import { CheckMonyAvailabilityParams } from "./type";
 import { ReturnValue } from "../nationalNumber/type";

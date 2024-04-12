@@ -1,17 +1,14 @@
-import Video from "@/components/ui/video";
 import { useNavigate } from "react-router-dom";
+import SingleVideo from "@/components/pages/singleVideo";
+import pagesRoutes from "@/constants/pagesRoutes";
 
 const GreetingPage = () => {
   const navigate = useNavigate();
   const handleNext = () => {
-    navigate("/al-labeb/user-name");
+    navigate(pagesRoutes.userName);
   };
   return (
-    <div className=" flex  items-center justify-center">
-      <div className="md:w-1/2 lg:w-1/3 ">
-        <Video src="1" onNext={handleNext} validation="unSet" />
-      </div>
-    </div>
+    <SingleVideo videoNumber="1" handleNext={handleNext} validation="unSet" />
   );
 };
 

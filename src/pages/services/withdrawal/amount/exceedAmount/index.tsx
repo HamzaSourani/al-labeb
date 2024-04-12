@@ -1,17 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import Video from "@/components/ui/video";
+import SingleVideo from "@/components/pages/singleVideo";
+import pagesRoutes from "@/constants/pagesRoutes";
 
 const ExceedAmountPage = () => {
   const navigate = useNavigate();
   const handleNext = () => {
-    navigate("/al-labeb/withdrawal/amount");
+    navigate(pagesRoutes.withdrawal.amount.main);
   };
   return (
-    <div className=" flex  items-center justify-center">
-      <div className="md:w-1/2 lg:w-1/3 ">
-        <Video src="48" onNext={handleNext} validation="unSet" />
-      </div>
-    </div>
+    <SingleVideo videoNumber="48" validation="unSet" handleNext={handleNext} />
   );
 };
 
