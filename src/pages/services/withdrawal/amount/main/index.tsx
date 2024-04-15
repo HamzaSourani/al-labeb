@@ -1,49 +1,55 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NumericKeyboard from "@/components/ui/NumericKeyboard";
-import Video from "@/components/ui/video";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import { checkMonyAvailability } from "@/api/withdrawal";
 import useValidation from "@/hooks/useValidation";
-import { Key } from "@/components/ui/NumericKeyboard/type";
 import pagesRoutes from "@/constants/pagesRoutes";
+import VideoWithAmount from "@/components/pages/videoWithAmount";
 
 const WithdrawalAmountPage = () => {
-  const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
+  const [secondSegmentOfDigit, setSecondSegmentOfDigit] = useState<number[]>([
+    0, 0, 0,
+  ]);
+  const [thirdSegmentOfDigit, setThirdSegmentOfDigit] = useState<number[]>([
+    0, 0, 0,
+  ]);
+  const enteredValue = ([0, 0, 0] as (string | number)[])
+    .concat([","], secondSegmentOfDigit, [","], thirdSegmentOfDigit)
+    .reverse()
+    .join("");
+  const navigate = useNavigate();
   const { depositOrWithdrawalInfo, handleAddDepositOrWithdrawalInfo } =
     useUserInfoContext();
-  const navigate = useNavigate();
-  const enteredKeysString = enteredKeys.map((key) => key.value).join("");
-  const [isValid, setIsValid] = useValidation(Number(enteredKeysString) > 0);
+  const [isValid, setIsValid] = useValidation(enteredValue !== "000,000,000");
 
   const handleSubmit = async () => {
     setIsValid("unValid");
     const res = await checkMonyAvailability({
       national_id: depositOrWithdrawalInfo.client,
       account_id: depositOrWithdrawalInfo.account_id,
-      amount: enteredKeysString,
+      amount: enteredValue,
     });
     if (res && res?.status) {
       handleAddDepositOrWithdrawalInfo({
         key: "amount",
-        value: enteredKeysString,
+        value: enteredValue,
       });
       navigate(pagesRoutes.withdrawal.cause.main);
     } else {
       navigate(pagesRoutes.withdrawal.amount.exceedAmount);
     }
   };
-
   return (
-    <div className="flex  flex-col  items-center justify-around  md:flex-row">
-      <div className="basis-1/3">
-        <Video src="40.2" onNext={handleSubmit} validation={isValid} />
-      </div>
-      <NumericKeyboard
-        enteredKeys={enteredKeys}
-        setEnteredKeys={setEnteredKeys}
-      />
-    </div>
+    <VideoWithAmount
+      enteredValue={enteredValue}
+      secondSegmentOfDigit={secondSegmentOfDigit}
+      thirdSegmentOfDigit={thirdSegmentOfDigit}
+      validation={isValid}
+      videoNumber="40.2"
+      setSecondSegmentOfDigit={setSecondSegmentOfDigit}
+      setThirdSegmentOfDigit={setThirdSegmentOfDigit}
+      handleNext={handleSubmit}
+    />
   );
 };
 

@@ -2,32 +2,42 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import useValidation from "@/hooks/useValidation";
-import { Key } from "@/components/ui/NumericKeyboard/type";
-import VideoWithNumericKeyboard from "@/components/pages/videoWithNumericKeyboard";
 import pagesRoutes from "@/constants/pagesRoutes";
+import VideoWithAmount from "@/components/pages/videoWithAmount";
 
 const DepositAmountPage = () => {
-  const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
+  const [secondSegmentOfDigit, setSecondSegmentOfDigit] = useState<number[]>([
+    0, 0, 0,
+  ]);
+  const [thirdSegmentOfDigit, setThirdSegmentOfDigit] = useState<number[]>([
+    0, 0, 0,
+  ]);
+  const enteredValue = ([0, 0, 0] as (string | number)[])
+    .concat([","], secondSegmentOfDigit, [","], thirdSegmentOfDigit)
+    .reverse()
+    .join("");
   const navigate = useNavigate();
-  const enteredKeysString = enteredKeys.map((key) => key.value).join("");
   const { handleAddDepositOrWithdrawalInfo } = useUserInfoContext();
-  const [isValid, setIsValid] = useValidation(Number(enteredKeysString) > 0);
+  const [isValid, setIsValid] = useValidation(enteredValue !== "000,000,000");
 
   const handleSubmit = () => {
     setIsValid("unValid");
     handleAddDepositOrWithdrawalInfo({
       key: "amount",
-      value: enteredKeysString,
+      value: enteredValue,
     });
     navigate(pagesRoutes.deposit.end);
   };
 
   return (
-    <VideoWithNumericKeyboard
-      enteredKeys={enteredKeys}
+    <VideoWithAmount
+      enteredValue={enteredValue}
+      secondSegmentOfDigit={secondSegmentOfDigit}
+      thirdSegmentOfDigit={thirdSegmentOfDigit}
       validation={isValid}
       videoNumber="4.2"
-      setEnteredKeys={setEnteredKeys}
+      setSecondSegmentOfDigit={setSecondSegmentOfDigit}
+      setThirdSegmentOfDigit={setThirdSegmentOfDigit}
       handleNext={handleSubmit}
     />
   );
