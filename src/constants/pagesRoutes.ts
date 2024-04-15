@@ -1,6 +1,7 @@
 const pagesRoutes = {
   greeting: "/al-labeb/greeting",
   userName: "/al-labeb/user-name",
+  phoneNumber: "/al-labeb/user-phone",
   nationalNumber: {
     main: "/al-labeb/national-number",
     unExist: "/al-labeb/national-number/un-exist",

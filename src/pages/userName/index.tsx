@@ -1,7 +1,5 @@
 import { useState } from "react";
-import Keyboard from "@/components/ui/keyboard";
 import { Key } from "@/components/ui/keyboard/type";
-import Video from "@/components/ui/video";
 import VideoPlaylist from "@/components/ui/videoPlayList";
 import { useUserInfoContext } from "@/hooks/usUserInfo";
 import useValidation from "@/hooks/useValidation";
@@ -30,7 +28,7 @@ const UserNamePage = () => {
         <div className="basis-1/3">
           <VideoPlaylist
             videoSources={enteredKeys.map((key) => key.value)}
-            nextUrl={pagesRoutes.userName}
+            nextUrl={pagesRoutes.phoneNumber}
           />
         </div>
       ) : (
