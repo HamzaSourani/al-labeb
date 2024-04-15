@@ -11,7 +11,7 @@ const VideoWithOptions = ({
 }: VideoWithOptionsProps) => {
   return (
     <div>
-      <div className="flex  justify-center gap-4">
+      <div className="flex  items-start justify-center gap-4">
         <div className="  md:w-1/2 lg:w-1/3 ">
           <Video
             src={selectedOption.src}
@@ -19,7 +19,12 @@ const VideoWithOptions = ({
             validation={validation}
           />
         </div>
-        <div className="flex max-h-[calc(100vh_-_120px)] snap-y snap-mandatory  flex-col gap-y-4 self-start overflow-auto ">
+        <div
+          className={classNames("grid  items-start gap-4 ", {
+            "grid-cols-2": options.length <= 3,
+            "grid-cols-3": options.length > 3,
+          })}
+        >
           {options.map((cause) => (
             <div
               key={cause.src}
@@ -35,7 +40,7 @@ const VideoWithOptions = ({
               <figure>
                 <img
                   src={`/assets/images/thumbnail/${cause.src}.png`}
-                  className="aspect-square w-52 "
+                  className="aspect-square w-48 "
                   alt=""
                 />
                 <figcaption

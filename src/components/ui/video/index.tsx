@@ -36,10 +36,10 @@ const Video = ({ src, validation, onNext }: VideoProps) => {
 
   return (
     <div className="flex h-full w-full flex-col gap-4 overflow-hidden rounded-lg shadow-sm shadow-gray-300">
-      <div className="overflow-hidden rounded-t-lg border border-primary">
+      <div className="min-h-96 overflow-hidden rounded-t-lg border border-primary">
         <video
           ref={videoRef}
-          className="aspect-square"
+          className="aspect-square "
           onEnded={handleVideoEnd}
           src={`/assets/videos/${src}.mp4`}
           autoPlay
