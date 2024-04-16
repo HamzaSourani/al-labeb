@@ -10,7 +10,7 @@ const pagesRoutes = {
     main: "/al-labeb/services",
     IBAN: {
       main: "/al-labeb/services/IBAN",
-      reEnterNationalNumber: "/al-labeb/services/re-enter-national-number",
+      reEnterNationalNumber: "/al-labeb/services/IBAN/re-enter-national-number",
     },
   },
   openAccount: {
