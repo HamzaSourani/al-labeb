@@ -31,8 +31,8 @@ const NationalNumberMainPage = () => {
     if (res?.data && res.data.status) {
       navigate(pagesRoutes.services.main);
     } else {
+      navigate(pagesRoutes.nationalNumber.unExist);
     }
-    navigate(pagesRoutes.nationalNumber.unExist);
   };
   return (
     <VideoWithNumericKeyboard
