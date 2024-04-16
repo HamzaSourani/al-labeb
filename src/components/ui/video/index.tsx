@@ -22,6 +22,7 @@ const Video = ({ src, validation, onNext }: VideoProps) => {
   const handleReplay = () => {
     videoRef.current.currentTime = 0;
     videoRef.current.play();
+    setStatus(true);
   };
 
   const handleVideoEnd = () => {
