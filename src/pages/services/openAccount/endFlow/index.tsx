@@ -10,14 +10,12 @@ const EndOpenAccountFlowPage = () => {
   const [index, setIndex] = useState(0);
   const [isValid, setIsValid] = useValidation(true);
   const navigate = useNavigate();
-  const { userInfo, handleChangeUserStatus } = useUserInfoContext();
+  const { userInfo } = useUserInfoContext();
   const videoSources = ["21", "22", "20"];
   const handleNext = async () => {
     if (index === videoSources.length - 1) {
       setIsValid("unValid");
-      handleChangeUserStatus({ isNewUser: true });
       await openAccount(userInfo);
-
       navigate(pagesRoutes.end);
     } else {
       setIndex((pre) => pre + 1);

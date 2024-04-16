@@ -43,7 +43,6 @@ const pagesRoutes = {
     end: "/al-labeb/open-account/end",
   },
   deposit: {
-    main: "/al-labeb/deposit",
     source: {
       main: "/al-labeb/deposit/source",
       financialBusinessIncome:
@@ -54,7 +53,6 @@ const pagesRoutes = {
     end: "/al-labeb/deposit/end",
   },
   withdrawal: {
-    main: "/al-labeb/withdrawal",
     cause: {
       main: "/al-labeb/withdrawal/cause",
       personalExpense: "/al-labeb/withdrawal/cause/personal-expense",

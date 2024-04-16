@@ -13,7 +13,7 @@ const EndPage = () => {
   const handleNext = () => {
     if (!!!depositOrWithdrawalInfo.service_name) {
       handleAddDepositOrWithdrawalInfo({ key: "service_name", value: "إيداع" });
-      navigate(pagesRoutes.deposit.main);
+      navigate(pagesRoutes.deposit.source.main);
     } else {
       handleReset();
       navigate("/");

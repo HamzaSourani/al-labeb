@@ -83,7 +83,6 @@ const ReEnterNationalNumberPage = lazy(
   () =>
     import("@/pages/services/depositOrWithdrawal/IBAN/reEnterNationalNumber"),
 );
-const DepositMainPage = lazy(() => import("@/pages/services/deposit/main"));
 const DepositSourcePage = lazy(
   () => import("@/pages/services/deposit/source/main"),
 );
@@ -95,9 +94,7 @@ const DepositAmountPage = lazy(() => import("@/pages/services/deposit/amount"));
 const EndDepositFlowPage = lazy(
   () => import("@/pages/services/deposit/endFlow"),
 );
-const WithdrawalMainPage = lazy(
-  () => import("@/pages/services/withdrawal/main"),
-);
+
 const WithdrawalCausePage = lazy(
   () => import("@/pages/services/withdrawal/cause/main"),
 );
@@ -202,7 +199,6 @@ const Routes = () => {
             path="services/IBAN/re-enter-national-number"
             element={<ReEnterNationalNumberPage />}
           />
-          <Route path="deposit" element={<DepositMainPage />} />
           <Route path="deposit/source" element={<DepositSourcePage />} />
           <Route
             path="deposit/source/financial-business-income"
@@ -212,7 +208,6 @@ const Routes = () => {
           <Route path="deposit/amount" element={<DepositAmountPage />} />
           <Route path="deposit/end" element={<EndDepositFlowPage />} />
 
-          <Route path="withdrawal" element={<WithdrawalMainPage />} />
           <Route path="withdrawal/cause" element={<WithdrawalCausePage />} />
           <Route
             path="withdrawal/cause/personal-expense"
