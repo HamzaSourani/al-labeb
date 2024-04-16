@@ -34,6 +34,15 @@ const Video = ({ src, validation, onNext }: VideoProps) => {
     else setGoNext(false);
   }, [validation]);
 
+  useEffect(() => {
+    const handleVideoEnd = () => setStatus(false);
+    videoRef.current.addEventListener("ended", handleVideoEnd);
+    const video = videoRef.current;
+    return () => {
+      video.removeEventListener("ended", handleVideoEnd);
+    };
+  }, []);
+
   return (
     <div className="flex h-full w-full flex-col gap-4 overflow-hidden rounded-lg shadow-sm shadow-gray-300">
       <div className="min-h-96 overflow-hidden rounded-t-lg border border-primary">

@@ -35,10 +35,8 @@ const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
       video.removeEventListener("ended", playNextVideo);
     };
   }, [currentVideoIndex, playNextVideo, videoSources]);
-  console.log(currentVideoIndex);
 
   const currentVideo = videoSources[currentVideoIndex];
-  console.log(currentVideo);
 
   return (
     <div className="flex h-full w-full flex-col gap-4  overflow-hidden rounded-lg shadow-sm shadow-gray-300">
