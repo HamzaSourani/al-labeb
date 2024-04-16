@@ -14,7 +14,9 @@ const IBANPage = () => {
     userInfo,
     handleAddDepositOrWithdrawalInfo,
   } = useUserInfoContext();
-  const [isValid, setIsValid] = useValidation(enteredKeys.length === 9);
+  const [isValid, setIsValid] = useValidation(
+    enteredKeys.length >= 5 && enteredKeys.length <= 10,
+  );
 
   const navigate = useNavigate();
   const handleSubmit = async () => {

@@ -10,10 +10,12 @@ const UserPhoneNumberPage = () => {
   const [enteredKeys, setEnteredKeys] = useState<Key[]>([]);
   const { handleAddInfo, handleAddDepositOrWithdrawalInfo } =
     useUserInfoContext();
-  const [isValid, setIsValid] = useValidation(enteredKeys.length === 10);
+  const enteredKeysString = enteredKeys.map((key) => key.value).join("");
+  const [isValid, setIsValid] = useValidation(
+    enteredKeys.length === 10 && enteredKeysString.match(/^09[0-9]+$/) !== null,
+  );
 
   const navigate = useNavigate();
-  const enteredKeysString = enteredKeys.map((key) => key.value).join("");
   const handleSubmit = () => {
     setIsValid("unValid");
     handleAddInfo({
