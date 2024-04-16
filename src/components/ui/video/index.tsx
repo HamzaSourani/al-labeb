@@ -42,7 +42,11 @@ const Video = ({ src, validation, onNext }: VideoProps) => {
           className="aspect-square "
           onEnded={handleVideoEnd}
           src={`/assets/videos/${src}.mp4`}
-          autoPlay
+          onCanPlay={() => {
+            setTimeout(() => {
+              videoRef.current.play();
+            }, 700);
+          }}
         />
       </div>
       <div className="grid  p-4 [grid-template-columns:auto_1fr]">
