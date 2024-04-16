@@ -60,10 +60,10 @@ const ThreeDigit = ({
               {({ isNext }) => (
                 <div
                   className={classNames(
-                    "flex h-full items-center justify-center transition-colors  ",
+                    "flex h-full items-center justify-center transition-all  ",
                     {
-                      " text-secondary ": isNext,
-                      "text-gray-400": !isNext,
+                      " text-xl font-semibold text-secondary ": isNext,
+                      "text-gray-400 ": !isNext,
                     },
                   )}
                 >
@@ -90,7 +90,7 @@ const ThreeDigit = ({
                   className={classNames(
                     "flex h-full items-center justify-center transition-colors  ",
                     {
-                      " text-secondary ": isNext,
+                      "text-xl font-semibold text-secondary ": isNext,
                       "text-gray-400": !isNext,
                     },
                   )}
@@ -118,7 +118,7 @@ const ThreeDigit = ({
                   className={classNames(
                     "flex h-full items-center justify-center transition-colors  ",
                     {
-                      " text-secondary ": isNext,
+                      "text-xl font-semibold text-secondary ": isNext,
                       "text-gray-400": !isNext,
                     },
                   )}
