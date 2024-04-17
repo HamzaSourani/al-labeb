@@ -9,6 +9,8 @@ import VideoProps from "./type";
 const Video = ({ src, validation, onNext }: VideoProps) => {
   const [status, setStatus] = useState(true);
   const [goNext, setGoNext] = useState(false);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+
   const videoRef = useRef<HTMLVideoElement>(null!);
   const handlePlayPause = () => {
     if (status) {
@@ -46,13 +48,21 @@ const Video = ({ src, validation, onNext }: VideoProps) => {
 
   return (
     <div className="flex h-full w-full flex-col gap-4 overflow-hidden rounded-lg shadow-sm shadow-gray-300">
-      <div className="min-h-[27rem] overflow-hidden rounded-t-lg border border-primary">
+      <div className="relative min-h-[36rem] overflow-hidden rounded-t-lg border border-primary">
+        <img
+          className={" absolute -z-10 aspect-square w-full  object-cover "}
+          src="/assets/images/thumbnail.png"
+          alt="video thumbnail"
+        />
         <video
           ref={videoRef}
-          className="aspect-square "
+          className={classNames("aspect-square", {
+            "opacity-0": !isVideoReady,
+          })}
           onEnded={handleVideoEnd}
           src={`/assets/videos/${src}.mp4`}
           onCanPlay={() => {
+            setIsVideoReady(true);
             setTimeout(() => {
               videoRef.current.play();
             }, 700);
