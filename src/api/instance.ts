@@ -1,6 +1,6 @@
 import axios from "axios";
 
 const API_INSTANCE = axios.create({
-  baseURL: "https://ecfe-178-52-71-103.ngrok-free.app/api",
+  baseURL: "http://127.0.0.1:5004/api",
 });
 export default API_INSTANCE;

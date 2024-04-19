@@ -47,7 +47,7 @@ const Video = ({ src, validation, onNext }: VideoProps) => {
   }, []);
 
   return (
-    <div className="flex h-full w-full flex-col gap-4 overflow-hidden rounded-lg shadow-sm shadow-gray-300">
+    <div className="flex h-full w-full flex-col gap-4 overflow-hidden ">
       <div className="relative min-h-[36rem] overflow-hidden rounded-t-lg border border-primary">
         <img
           className={" absolute -z-10 aspect-square w-full  object-cover "}
@@ -69,7 +69,11 @@ const Video = ({ src, validation, onNext }: VideoProps) => {
           }}
         />
       </div>
-      <div className="grid  p-4 [grid-template-columns:auto_1fr]">
+      <div
+        className={classNames("grid  p-4 ", {
+          "[grid-template-columns:auto_1fr]": onNext,
+        })}
+      >
         {onNext && (
           <button
             className=" flex flex-col items-center justify-center transition-transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"

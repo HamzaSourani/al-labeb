@@ -8,7 +8,7 @@ const YesNo = ({
 }: YesNoProps) => {
   return (
     <div className="flex  flex-col items-center  justify-center gap-y-4">
-      <div className="rounded-lg border border-secondary  shadow  shadow-shadow md:w-1/2 lg:w-1/3 ">
+      <div className=" md:w-1/2 lg:w-1/3 ">
         <Video src={videoNumber} />
       </div>
       <div className="flex justify-center">
