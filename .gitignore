@@ -13,8 +13,8 @@
 
 #public assets
 /public/assets/videos
-# # api instance
-# /src/api/instance.ts
+# api instance
+/src/api/instance.ts
 # misc
 .DS_Store
 .env.local
