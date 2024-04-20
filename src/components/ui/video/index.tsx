@@ -48,7 +48,7 @@ const Video = ({ src, validation, onNext }: VideoProps) => {
 
   return (
     <div className="flex h-full w-full flex-col gap-4 overflow-hidden ">
-      <div className="relative min-h-[36rem] overflow-hidden rounded-t-lg border border-primary">
+      <div className="relative aspect-square overflow-hidden rounded-t-lg border border-primary">
         <img
           className={" absolute -z-10 aspect-square w-full  object-cover "}
           src="/assets/images/thumbnail.png"
