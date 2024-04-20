@@ -39,10 +39,12 @@ export interface HandleAddDepositOrWithdrawalInfoParams {
 export interface UserInfoContextType {
   userInfo: UserInfo;
   depositOrWithdrawalInfo: DepositOrWithDrawalInfoObject;
+  isNewUser: boolean;
   handleAddInfo: ({ key, value }: HandleAddInfoParams) => void;
   handleAddDepositOrWithdrawalInfo: ({
     key,
     value,
   }: HandleAddDepositOrWithdrawalInfoParams) => void;
   handleReset: () => void;
+  handleChangeUserStatus: ({ isNewUser }: { isNewUser: boolean }) => void;
 }

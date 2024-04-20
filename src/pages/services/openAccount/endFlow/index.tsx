@@ -10,12 +10,16 @@ const EndOpenAccountFlowPage = () => {
   const [index, setIndex] = useState(0);
   const [isValid, setIsValid] = useValidation(true);
   const navigate = useNavigate();
-  const { userInfo } = useUserInfoContext();
+  const { userInfo, handleAddDepositOrWithdrawalInfo, handleChangeUserStatus } =
+    useUserInfoContext();
   const videoSources = ["21", "22", "20"];
   const handleNext = async () => {
     if (index === videoSources.length - 1) {
       setIsValid("unValid");
       await openAccount(userInfo);
+
+      handleAddDepositOrWithdrawalInfo({ key: "service_name", value: "إيداع" });
+      handleChangeUserStatus({ isNewUser: true });
       navigate(pagesRoutes.end);
     } else {
       setIndex((pre) => pre + 1);

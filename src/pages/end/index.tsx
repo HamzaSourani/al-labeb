@@ -5,14 +5,11 @@ import pagesRoutes from "@/constants/pagesRoutes";
 
 const EndPage = () => {
   const navigate = useNavigate();
-  const {
-    depositOrWithdrawalInfo,
-    handleAddDepositOrWithdrawalInfo,
-    handleReset,
-  } = useUserInfoContext();
+  const { isNewUser, handleReset, handleChangeUserStatus } =
+    useUserInfoContext();
   const handleNext = () => {
-    if (!!depositOrWithdrawalInfo.service_name) {
-      handleAddDepositOrWithdrawalInfo({ key: "service_name", value: "إيداع" });
+    if (isNewUser) {
+      handleChangeUserStatus({ isNewUser: false });
       navigate(pagesRoutes.deposit.source.main);
     } else {
       handleReset();
