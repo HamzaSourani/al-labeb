@@ -11,7 +11,7 @@ const EndPage = () => {
     handleReset,
   } = useUserInfoContext();
   const handleNext = () => {
-    if (!!!depositOrWithdrawalInfo.service_name) {
+    if (!!depositOrWithdrawalInfo.service_name) {
       handleAddDepositOrWithdrawalInfo({ key: "service_name", value: "إيداع" });
       navigate(pagesRoutes.deposit.source.main);
     } else {
