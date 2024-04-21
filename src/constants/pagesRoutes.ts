@@ -19,7 +19,7 @@ const pagesRoutes = {
       main: "/al-labeb/open-account/saving-account",
       explanation: "/al-labeb/open-account/saving-account/explanation",
     },
-    termsAndConditions: "/al-labe b/open-account/terms-and-conditions",
+    termsAndConditions: "/al-labeb/open-account/terms-and-conditions",
 
     motherFirstName: "/al-labeb/open-account/mother-first-name",
     motherLastName: "/al-labeb/open-account/mother-last-name",
@@ -50,6 +50,7 @@ const pagesRoutes = {
     },
     cause: "/al-labeb/deposit/cause",
     amount: "/al-labeb/deposit/amount",
+    shouldDeposit: "/al-labeb/deposit/should-deposit",
     end: "/al-labeb/deposit/end",
   },
   withdrawal: {

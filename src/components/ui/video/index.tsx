@@ -64,7 +64,7 @@ const Video = ({ src, validation, onNext }: VideoProps) => {
           onCanPlay={() => {
             setIsVideoReady(true);
             setTimeout(() => {
-              videoRef.current.play();
+              videoRef.current.play && videoRef.current.play();
             }, 700);
           }}
         />

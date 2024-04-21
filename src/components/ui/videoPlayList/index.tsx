@@ -39,7 +39,7 @@ const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
   const currentVideo = videoSources[currentVideoIndex];
 
   return (
-    <div className="flex h-full w-full flex-col gap-4  overflow-hidden rounded-lg shadow-sm shadow-gray-300">
+    <div className="flex h-full w-full flex-col gap-4  overflow-hidden ">
       <video
         key={currentVideoIndex}
         id="video-player"

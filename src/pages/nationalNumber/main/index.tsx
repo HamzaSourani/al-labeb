@@ -29,7 +29,7 @@ const NationalNumberMainPage = () => {
       value: enteredKeys.map((key) => key.value).join(""),
     });
     if (res?.data && res.data.status) {
-      navigate(pagesRoutes.services.main);
+      navigate(pagesRoutes.services.IBAN.main);
     } else {
       navigate(pagesRoutes.nationalNumber.unExist);
     }

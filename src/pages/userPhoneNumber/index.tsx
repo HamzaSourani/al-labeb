@@ -20,7 +20,7 @@ const UserPhoneNumberPage = () => {
     setIsValid("unValid");
     handleAddInfo({
       key: "phone",
-      value: enteredKeys,
+      value: enteredKeysString,
     });
     handleAddDepositOrWithdrawalInfo({
       key: "phone",

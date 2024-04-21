@@ -31,17 +31,8 @@ const IBANPage = () => {
         key: "account_id",
         value: enteredKeys.map((key) => key.value).join(""),
       });
-      switch (depositOrWithdrawalInfo.service_name) {
-        case "إيداع":
-          navigate(pagesRoutes.deposit.source.main);
-          break;
-        case "سحب":
-          navigate(pagesRoutes.withdrawal.amount.main);
-          break;
-        default:
-          navigate(pagesRoutes.services.main);
-          break;
-      }
+
+      navigate(pagesRoutes.services.main);
     } else {
       navigate(pagesRoutes.services.IBAN.reEnterNationalNumber);
     }

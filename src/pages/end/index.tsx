@@ -10,7 +10,7 @@ const EndPage = () => {
   const handleNext = () => {
     if (isNewUser) {
       handleChangeUserStatus({ isNewUser: false });
-      navigate(pagesRoutes.deposit.source.main);
+      navigate(pagesRoutes.deposit.shouldDeposit);
     } else {
       handleReset();
       navigate("/");

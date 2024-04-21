@@ -25,16 +25,16 @@ const ServicesPage = () => {
           key: "service_name",
           value: "إيداع",
         });
-
+        navigate(pagesRoutes.deposit.source.main);
         break;
       case "40":
         handleAddDepositOrWithdrawalInfo({
           key: "service_name",
           value: "سحب",
         });
+        navigate(pagesRoutes.withdrawal.amount.main);
         break;
     }
-    navigate(pagesRoutes.services.IBAN.main);
   };
   return (
     <VideoWithOptions

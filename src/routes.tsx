@@ -83,6 +83,9 @@ const ReEnterNationalNumberPage = lazy(
   () =>
     import("@/pages/services/depositOrWithdrawal/IBAN/reEnterNationalNumber"),
 );
+const ShouldDepositPage = lazy(
+  () => import("@/pages/services/deposit/shouldDeposit"),
+);
 const DepositSourcePage = lazy(
   () => import("@/pages/services/deposit/source/main"),
 );
@@ -198,6 +201,10 @@ const Routes = () => {
           <Route
             path="services/IBAN/re-enter-national-number"
             element={<ReEnterNationalNumberPage />}
+          />
+          <Route
+            path="deposit/should-deposit"
+            element={<ShouldDepositPage />}
           />
           <Route path="deposit/source" element={<DepositSourcePage />} />
           <Route
