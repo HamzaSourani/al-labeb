@@ -3,9 +3,12 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        frutiger: "frutiger, sans-serif",
+      },
       colors: {
-        primary: "#D0B372",
-        secondary: "#262626",
+        primary: "#caa860",
+        secondary: "#347181",
         shadow: "#4682B4",
       },
       keyframes: {

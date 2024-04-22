@@ -12,7 +12,7 @@ const LoadingPage = () => {
       onClick={handleNavigate}
     >
       <img
-        className="animate-pulse"
+        className="w-2/6 animate-pulse"
         src="/assets/images/SIIB_logo.png"
         alt="SSIB"
       />

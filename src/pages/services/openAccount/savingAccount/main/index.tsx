@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import Video from "@/components/ui/video";
 import YesNo from "@/components/pages/yesNo";
 import pagesRoutes from "@/constants/pagesRoutes";
 

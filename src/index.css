@@ -8,6 +8,15 @@
 .go-next {
   animation: go-next-animation 2s ease-in-out infinite;
 }
+@layer base {
+  @font-face {
+    font-family: frutiger;
+    src: url("../public/assets/fonts/Frutiger.ttf");
+  }
+  body {
+    @apply font-frutiger;
+  }
+}
 @keyframes go-next-animation {
   0% {
     transform: translateX(0);
