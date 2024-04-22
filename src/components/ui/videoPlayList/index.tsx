@@ -39,17 +39,19 @@ const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
   const currentVideo = videoSources[currentVideoIndex];
 
   return (
-    <div className="flex h-full w-full flex-col gap-4  overflow-hidden rounded-t-lg border border-primary ">
-      <video
-        key={currentVideoIndex}
-        id="video-player"
-        ref={videoRef}
-        className="aspect-square"
-        autoPlay
-        src={`/assets/videos/${currentVideo}.mp4`}
-      >
-        {/* <source src={`/assets/videos/${currentVideo}.mp4`} type="video/mp4" /> */}
-      </video>
+    <div className="flex h-full w-full flex-col gap-4  overflow-hidden   ">
+      <div className="rounded-lg border border-primary">
+        <video
+          key={currentVideoIndex}
+          id="video-player"
+          ref={videoRef}
+          className="aspect-square rounded-lg"
+          autoPlay
+          src={`/assets/videos/${currentVideo}.mp4`}
+        >
+          {/* <source src={`/assets/videos/${currentVideo}.mp4`} type="video/mp4" /> */}
+        </video>
+      </div>
       {nextUrl && (
         <div className="flex justify-start p-4">
           <button
