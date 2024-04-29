@@ -11,7 +11,9 @@ const NumberOfChildrenPage = () => {
   const { handleAddInfo } = useUserInfoContext();
   const navigate = useNavigate();
   const enteredKeysString = enteredKeys.map((key) => key.value).join("");
-  const [isValid, setIsValid] = useValidation(Number(enteredKeysString) >= 0);
+  const [isValid, setIsValid] = useValidation(
+    Number(enteredKeysString) >= 0 && Number(enteredKeysString) <= 50,
+  );
   const handleSubmit = async () => {
     setIsValid("unValid");
     handleAddInfo({

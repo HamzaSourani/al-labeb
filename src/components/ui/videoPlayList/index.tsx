@@ -40,7 +40,12 @@ const VideoPlaylist = ({ videoSources, nextUrl }: VideoPlayListProps) => {
 
   return (
     <div className="flex h-full w-full flex-col gap-4  overflow-hidden   ">
-      <div className="rounded-lg border border-primary">
+      <div className="relative aspect-square rounded-lg border border-primary">
+        <img
+          className={" absolute -z-10 aspect-square w-full  object-cover "}
+          src="/assets/images/thumbnail.png"
+          alt="video thumbnail"
+        />
         <video
           key={currentVideoIndex}
           id="video-player"
