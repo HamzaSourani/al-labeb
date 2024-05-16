@@ -46,6 +46,8 @@ const userInfoContext = createContext<UserInfoContextType>({
   userInfo: userInformation,
   depositOrWithdrawalInfo: depositOrWithDrawalInfoObject,
   isNewUser: false,
+  isAuthorize: false,
+  handleAuthorization: () => {},
   handleAddDepositOrWithdrawalInfo: () => {},
   handleAddInfo: () => {},
   handleReset: () => {},
@@ -61,7 +63,10 @@ const UserInfoProvider: FC<PropsWithChildren> = ({ children }) => {
   const [depositOrWithdrawalInfo, setDepositOrWithDrawalInfo] =
     useState<DepositOrWithDrawalInfoObject>(depositOrWithDrawalInfoObject);
   const [isNewUser, setIsNewUser] = useState(false);
-
+  const [isAuthorize, setIsAuthorize] = useState(false);
+  const handleAuthorization = (isAuthorize: boolean) => {
+    setIsAuthorize(isAuthorize);
+  };
   const handleAddInfo = ({ key, value }: HandleAddInfoParams) => {
     setUserInfo((prevUserInfo) => ({
       ...prevUserInfo,
@@ -91,10 +96,12 @@ const UserInfoProvider: FC<PropsWithChildren> = ({ children }) => {
         userInfo,
         depositOrWithdrawalInfo,
         isNewUser,
+        isAuthorize,
         handleAddInfo,
         handleAddDepositOrWithdrawalInfo,
         handleReset,
         handleChangeUserStatus,
+        handleAuthorization,
       }}
     >
       {children}

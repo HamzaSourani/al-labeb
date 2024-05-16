@@ -1,13 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+  box-sizing: border-box;
+}
 ::-webkit-scrollbar {
   width: 0;
 }
 
-.go-next {
-  animation: go-next-animation 2s ease-in-out infinite;
-}
 @layer base {
   @font-face {
     font-family: frutiger;
@@ -16,6 +16,9 @@
   body {
     @apply font-frutiger;
   }
+}
+.go-next {
+  animation: go-next-animation 2s ease-in-out infinite;
 }
 @keyframes go-next-animation {
   0% {

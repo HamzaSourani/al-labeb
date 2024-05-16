@@ -9,6 +9,7 @@ import App from "./App";
 import LoadingPage from "./pages/loading";
 import MainPage from "./pages/main";
 import Loading from "@/components/ui/loading";
+import { useUserInfoContext } from "./hooks/usUserInfo";
 const GreetingPage = lazy(() => import("@/pages/greeting"));
 const UserNamePage = lazy(() => import("@/pages/userName"));
 const UserPhoneNumberPage = lazy(() => import("@/pages/userPhoneNumber"));
@@ -117,7 +118,10 @@ const EndWithdrawalFlowPage = lazy(
   () => import("@/pages/services/withdrawal/endFlow"),
 );
 const EndPage = lazy(() => import("@/pages/end"));
+const EmployPasswordPage = lazy(() => import("@/pages/employPassword"));
+const PdfFilesPage = lazy(() => import("@/pages/pdfFiles"));
 const Routes = () => {
+  const { isAuthorize } = useUserInfoContext();
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<App />}>
@@ -232,6 +236,16 @@ const Routes = () => {
           <Route path="withdrawal/end" element={<EndWithdrawalFlowPage />} />
 
           <Route path="end" element={<EndPage />} />
+          <Route path="employ-password" element={<EmployPasswordPage />} />
+          {isAuthorize && <Route path="pdf-files" element={<PdfFilesPage />} />}
+          <Route
+            path="*"
+            element={
+              <div className="flex h-full items-center justify-center">
+                <h1>404</h1>
+              </div>
+            }
+          />
         </Route>
       </Route>,
     ),

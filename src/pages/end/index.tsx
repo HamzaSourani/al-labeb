@@ -5,19 +5,26 @@ import pagesRoutes from "@/constants/pagesRoutes";
 
 const EndPage = () => {
   const navigate = useNavigate();
-  const { isNewUser, handleReset, handleChangeUserStatus } =
+  const { isNewUser, userInfo, handleReset, handleChangeUserStatus } =
     useUserInfoContext();
   const handleNext = () => {
     if (isNewUser) {
       handleChangeUserStatus({ isNewUser: false });
       navigate(pagesRoutes.deposit.shouldDeposit);
     } else {
+      localStorage.setItem("national_id", userInfo.national_id);
       handleReset();
-      navigate("/");
+      navigate(`/al-labeb/employ-password`);
     }
   };
   return (
-    <SingleVideo videoNumber="30" handleNext={handleNext} validation="unSet" />
+    <>
+      <SingleVideo
+        videoNumber="30"
+        handleNext={handleNext}
+        validation="unSet"
+      />
+    </>
   );
 };
 

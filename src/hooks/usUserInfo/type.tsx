@@ -40,6 +40,8 @@ export interface UserInfoContextType {
   userInfo: UserInfo;
   depositOrWithdrawalInfo: DepositOrWithDrawalInfoObject;
   isNewUser: boolean;
+  isAuthorize: boolean;
+  handleAuthorization: (isAuthorize: boolean) => void;
   handleAddInfo: ({ key, value }: HandleAddInfoParams) => void;
   handleAddDepositOrWithdrawalInfo: ({
     key,

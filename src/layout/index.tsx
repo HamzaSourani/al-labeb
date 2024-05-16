@@ -11,7 +11,7 @@ const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
     navigate("/al-labeb/greeting");
   };
   return (
-    <div className="grid h-full [grid-template-rows:120px_auto]">
+    <div className="grid h-full  [grid-template-rows:120px_auto]">
       <header className="flex justify-between px-10 py-5">
         <img
           src="/assets/images/SIIB_logo.png"

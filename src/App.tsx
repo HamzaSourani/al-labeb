@@ -1,9 +1,8 @@
 import { useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import UserInfoProvider from "./hooks/usUserInfo";
 import "./App.css";
 import { AnimatePresence, motion } from "framer-motion";
-
+import bg from "./assets/bg.jpg";
 function App() {
   const containerRef = useRef<HTMLDivElement>(null!);
   const location = useLocation();
@@ -29,29 +28,25 @@ function App() {
     //   },
     // },
   };
+
   return (
     <AnimatePresence>
       <div
         ref={containerRef}
-        onClick={() => containerRef.current.requestFullscreen()}
-        className=" h-screen "
+        // onClick={() => containerRef.current.requestFullscreen()}
+        style={{ backgroundImage: `url(${bg})` }}
+        className="!h-screen overflow-hidden"
       >
-        <img
-          className="absolute -z-10 h-screen w-screen object-cover"
-          src="/bg.jpg"
-          alt="background"
-        />
-        <UserInfoProvider>
-          <motion.div
-            key={location.key}
-            variants={variant}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <Outlet />
-          </motion.div>
-        </UserInfoProvider>
+        <motion.div
+          key={location.key}
+          className="h-full"
+          variants={variant}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          <Outlet />
+        </motion.div>
       </div>
     </AnimatePresence>
   );

@@ -4,5 +4,7 @@ const API_ROUTES = {
   DEPOSIT: "/deposit",
   WITHDRAWAL: "/withdrawal",
   CHECK_MONY_AVAILABILITY: "/withdrawal_availability",
+  RETRIEVE_PDF_NAMES: "/retrieve_pdf_names",
+  RETRIEVE_PDF: "/retrieve_pdf",
 };
 export default API_ROUTES;
