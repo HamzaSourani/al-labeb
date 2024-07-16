@@ -33,7 +33,7 @@ function App() {
     <AnimatePresence>
       <div
         ref={containerRef}
-        // onClick={() => containerRef.current.requestFullscreen()}
+        onClick={() => containerRef.current.requestFullscreen()}
         style={{ backgroundImage: `url(${bg})` }}
         className="!h-screen overflow-hidden"
       >
