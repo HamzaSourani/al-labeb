@@ -20,7 +20,7 @@ const VideoWithAmount = ({
           {enteredValue}
         </output>
       </div>
-      <div className="flex h-full w-full flex-col gap-4 overflow-hidden rounded-lg bg-gray-100/80 shadow-sm shadow-gray-300">
+      <div className="flex h-full w-full flex-col gap-4 overflow-hidden rounded-lg ">
         <div className="overflow-hidden rounded-t-lg border border-primary">
           <video
             className="aspect-square w-full"
@@ -34,7 +34,7 @@ const VideoWithAmount = ({
           setEnteredNumber={setSecondSegmentOfDigit}
         />
       </div>
-      <div className="flex h-full w-full flex-col gap-4 overflow-hidden rounded-lg bg-gray-100/80 shadow-sm shadow-gray-300">
+      <div className="flex h-full w-full flex-col gap-4 overflow-hidden rounded-lg ">
         <div className="overflow-hidden rounded-t-lg border border-primary">
           <video
             className="aspect-square w-full"
