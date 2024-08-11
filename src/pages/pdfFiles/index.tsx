@@ -35,20 +35,20 @@ const PdfFilesPage = () => {
       case "withdrowl":
         return "سحب";
       case "open account":
-        return "فتح حساب";
+        return  "فتح حساب التوفير";
     }
   };
   return (
     <div className="grid  grid-cols-2 justify-center gap-8 px-16 ">
-      <div className="w-[500px]">
-        <table className="max-h-[500px]  overflow-auto">
+      <div className="w-[600px]">
+        <table className="max-h-[600px]  overflow-auto">
           <th className="  grid grid-cols-4 gap-2">
             {tableHeader.reverse().map((head) => (
               <th key={head} className="text-primary">
                 {head}
               </th>
             ))}
-            <tbody className="w-[500px]">
+            <tbody className="w-[600px]">
               <div className="w-full border-b border-secondary"></div>
               {loading ? (
                 <div className="my-8 flex justify-center">
@@ -74,7 +74,7 @@ const PdfFilesPage = () => {
                         <td key={pdfDetails}>
                           {index === 1
                             ? enArServiceConverter(pdfDetails)
-                            : pdfDetails}
+                            :index===3? pdfDetails.replace(".pdf",""):pdfDetails}
                         </td>
                       ))}
                     </tr>

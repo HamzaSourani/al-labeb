@@ -9,7 +9,7 @@ const handleDigitSectionChange=(digitIndex:number)=>{
     return (newDigit:number)=>{
     setEnteredNumber((pre)=>{
       const newEnteredDigits=[...pre]
-      if(newDigit)
+      if(typeof newDigit === "number")
       newEnteredDigits[digitIndex]=newDigit
       return newEnteredDigits
     })
