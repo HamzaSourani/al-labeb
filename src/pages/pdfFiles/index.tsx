@@ -28,11 +28,10 @@ const PdfFilesPage = () => {
   }, []);
 
   const enArServiceConverter = (service: string) => {
-    console.log(service);
     switch (service) {
       case "deposit":
         return "إيداع";
-      case "withdrowl":
+      case "withdrawal":
         return "سحب";
       case "open account":
         return  "فتح حساب التوفير";
