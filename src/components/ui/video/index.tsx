@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
+import videosDescriptions from "@/constants/videosDescriptions";
 import NextIcon from "@/components/svg/next";
 import PauseIcon from "@/components/svg/pause";
 import PlayIcon from "@/components/svg/play";
@@ -12,6 +13,11 @@ const Video = ({ src, validation, onNext }: VideoProps) => {
   const [isVideoReady, setIsVideoReady] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement>(null!);
+
+  const videoDescription = videosDescriptions.find(
+    (description) => description.key === src,
+  )?.value;
+
   const handlePlayPause = () => {
     if (status) {
       videoRef.current.pause();
@@ -69,6 +75,8 @@ const Video = ({ src, validation, onNext }: VideoProps) => {
           }}
         />
       </div>
+      <p className="text-secondary text-center">{videoDescription}</p>
+
       <div
         className={classNames("grid  p-4 ", {
           "[grid-template-columns:auto_1fr]": onNext,
