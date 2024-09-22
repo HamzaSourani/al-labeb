@@ -1,6 +1,7 @@
 import ThreeDigit from "@/components/ui/threeDigit/idex";
 import Video from "@/components/ui/video";
 import { VideoWithAmountProps } from "./type";
+import videosDescriptions from "@/constants/videosDescriptions";
 
 const VideoWithAmount = ({
   enteredValue,
@@ -12,6 +13,12 @@ const VideoWithAmount = ({
   setThirdSegmentOfDigit,
   handleNext,
 }: VideoWithAmountProps) => {
+  const secondSegmentDescription = videosDescriptions.find(
+    (description) => description.key === "51",
+  )?.value;
+  const thirdSegmentDescription = videosDescriptions.find(
+    (description) => description.key === "52",
+  )?.value;
   return (
     <div className="grid max-h-[60vh]  grid-cols-1 justify-around gap-4 px-10 md:grid-cols-2 md:px-24  lg:grid-cols-3 lg:px-32 ">
       <div className="flex flex-col  gap-2">
@@ -29,6 +36,7 @@ const VideoWithAmount = ({
             loop
           ></video>
         </div>
+        <p className="text-center text-secondary">{secondSegmentDescription}</p>
         <ThreeDigit
           enteredNumber={secondSegmentOfDigit}
           setEnteredNumber={setSecondSegmentOfDigit}
@@ -43,6 +51,7 @@ const VideoWithAmount = ({
             loop
           ></video>
         </div>
+        <p className="text-center text-secondary">{thirdSegmentDescription}</p>
         <ThreeDigit
           enteredNumber={thirdSegmentOfDigit}
           setEnteredNumber={setThirdSegmentOfDigit}

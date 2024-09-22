@@ -41,7 +41,7 @@ const Keyboard = ({ enteredKeys, setEnteredKeys }: KeyboardProps) => {
 
     { label: "د", value: "dal", img: "/assets/images/letters/dal.png" },
     { label: "ظ", value: "thah", img: "/assets/images/letters/thah.png" },
-    { label: "و", value: "wa", img: "/assets/images/letters/wa.png" },
+    { label: "و", value: "waw", img: "/assets/images/letters/waw.png" },
     { label: "ز", value: "za", img: "/assets/images/letters/za.png" },
     { label: "ة", value: "teh", img: "/assets/images/letters/teh.png" },
     { label: "ى", value: "yaa", img: "/assets/images/letters/yaa.png" },
