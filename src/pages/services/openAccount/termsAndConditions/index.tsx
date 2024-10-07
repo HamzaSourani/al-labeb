@@ -6,7 +6,7 @@ import pagesRoutes from "@/constants/pagesRoutes";
 
 const TermsAndConditionMainPage = () => {
   const [index, setIndex] = useState(0);
-  const videoSources = Array.from({ length: 5 }, (_, index) =>
+  const videoSources = Array.from({ length: 16 }, (_, index) =>
     String(100 + index),
   );
   const navigate = useNavigate();
