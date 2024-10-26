@@ -12,13 +12,14 @@ const SalaryPage = () => {
   const [thirdSegmentOfDigit, setThirdSegmentOfDigit] = useState<number[]>([
     0, 0, 0,
   ]);
-  const enteredValue = [0, 0, 0] 
-    .concat( secondSegmentOfDigit, thirdSegmentOfDigit)
-    .reverse().join("")
+  const enteredValue = ([0, 0, 0] as (string | number)[])
+    .concat([","], secondSegmentOfDigit, [","], thirdSegmentOfDigit)
+    .reverse()
+    .join("");
   const navigate = useNavigate();
   const {handleAddInfo } =
     useUserInfoContext();
-  const [isValid, setIsValid] = useValidation(enteredValue !== "000000000");
+  const [isValid, setIsValid] = useValidation(enteredValue !== "000,000,000");
 
   
 
