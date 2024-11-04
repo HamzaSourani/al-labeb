@@ -4,7 +4,7 @@ import { useUserInfoContext } from "@/hooks/usUserInfo";
 import { checkMonyAvailability } from "@/api/withdrawal";
 import useValidation from "@/hooks/useValidation";
 import pagesRoutes from "@/constants/pagesRoutes";
-import VideoWithAmount from "@/components/pages/videoWithAmount";
+import VideoWithAmount from "@/components/pages/amount";
 
 const WithdrawalAmountPage = () => {
   const [secondSegmentOfDigit, setSecondSegmentOfDigit] = useState<number[]>([
@@ -42,8 +42,6 @@ const WithdrawalAmountPage = () => {
   return (
     <VideoWithAmount
       enteredValue={enteredValue}
-      secondSegmentOfDigit={secondSegmentOfDigit}
-      thirdSegmentOfDigit={thirdSegmentOfDigit}
       validation={isValid}
       videoNumber="40.2"
       setSecondSegmentOfDigit={setSecondSegmentOfDigit}

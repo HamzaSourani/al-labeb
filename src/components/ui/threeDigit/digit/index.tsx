@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback, useRef } from 'react'
 import { EmblaCarouselType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
+import classNames from 'classnames'
 
 const CIRCLE_DEGREES = 360
 const WHEEL_ITEM_SIZE = 36
@@ -66,15 +67,17 @@ export const setContainerStyles = (
 
 type PropType = {
  handleDigitSectionChange:(newDigit:number)=>void
-  perspective: 'left' | 'right'|'center'
+  perspective: 'left' | 'right'|'center',
+  disabled?:boolean
 }
 
  const DigitSection: React.FC<PropType> = (props) => {
-  const {  perspective, handleDigitSectionChange} = props
+  const {  perspective,disabled=false, handleDigitSectionChange} = props
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop:true,
     axis: 'y',
     dragFree: true,
+    active:!disabled,
     containScroll: false,
     watchSlides: false
   })
@@ -142,7 +145,7 @@ type PropType = {
         >
           <div className="embla-container">
             {slides.map((_, index) => (
-              <div className="embla-slide" key={index}>
+              <div className={classNames("embla-slide",{"embla-slide-inactive":disabled})} key={index}>
                 {index}
               </div>
             ))}

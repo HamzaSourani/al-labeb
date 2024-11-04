@@ -112,8 +112,12 @@
     justify-content: center;
     backface-visibility: hidden;
     opacity: 0;
+    color:black;
   }
- 
+ .embla-slide-inactive{
+  color: gray;
+
+ }
   
 }
 .go-next {
